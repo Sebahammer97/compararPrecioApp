@@ -1,0 +1,31 @@
+package modelo;
+
+import java.util.HashSet;
+import java.util.Set;
+
+public class Local {
+
+	private int id;
+	private String nombre;
+	private Set<Producto> productos = new HashSet<Producto>();
+	
+	public Local(int id, String nombre, Set<Producto> productos) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.productos = productos;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public Set<Producto> getProductos() {
+		return productos;
+	}
+
+}

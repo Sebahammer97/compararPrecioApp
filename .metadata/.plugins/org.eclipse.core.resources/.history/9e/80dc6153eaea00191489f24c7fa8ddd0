@@ -1,0 +1,48 @@
+package modelo;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Local {
+
+	private int id;
+	private String nombre;
+	private List<Producto> productos = new ArrayList<Producto>();
+	private float distancia;
+	
+	public Local(int id, String nombre, List<Producto> productos, float distancia) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.productos = productos;
+		this.distancia = distancia;
+	}
+
+	public float getDistancia() {
+		return distancia;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public List<Producto> getProductos() {
+		return productos;
+	}
+	
+	public Producto getProducto(int id) {
+		for(Producto p: productos)
+		{
+			if(p.getId() == id)
+			{
+				return p;
+			}
+		}
+		return null;
+	}
+
+}

@@ -1,0 +1,68 @@
+package controlador;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import modelo.ItemListaCompra;
+import modelo.ItemResultado;
+import modelo.ListaCompra;
+import modelo.Local;
+import modelo.Producto;
+
+public class Controlador {
+	
+	private static Controlador instancia;
+
+	private Controlador() {
+	}
+
+	public static Controlador getInstancia() {
+		if (instancia == null)
+			instancia = new Controlador();
+		return instancia;
+	}
+	
+	public ItemResultado procesarListaCompra(ListaCompra compra) {
+		//Obtener todos los locales
+		List<Local> locales = obtenerLocales();
+		ItemResultado resultado = new ItemResultado(1, null, 0f);
+		for(Local l: locales)
+		{
+			float presupuesto = 0;
+			for(ItemListaCompra i: compra.getLista())
+			{
+				l.getProducto(i.getProducto().getId());
+			}
+		}
+		return null;
+	}
+	
+	private List<Local> obtenerLocales() {
+		List<Producto> productos = new ArrayList<Producto>();
+		List<Local> locales = new ArrayList<Local>();
+		
+		Producto p = new Producto(1, 61.20f , "Oreo");
+		productos.add(p);
+		p = new Producto(2, 32.70f, "Criollitas");
+		productos.add(p);
+		p = new Producto(3, 39.99f, "Operas");
+		productos.add(p);
+		p = new Producto(4, 15.00f, "Merengadas");
+		productos.add(p);
+		p = new Producto(2, 5.50f, "Melbas");
+		productos.add(p);
+		
+		Local l = new Local(1, "Coto", productos, 3.5f);
+		locales.add(l);
+		l = new Local(2, "Disco", productos, 2.5f);
+		locales.add(l);
+		l = new Local(3, "Carrefour", productos, 1.0f);
+		locales.add(l);
+		l = new Local(4, "Walt-Mart", productos, 8.5f);
+		locales.add(l);
+		l = new Local(5, "Norte", productos, 1.0f);
+		locales.add(l);
+		
+		return locales;
+	}
+}

@@ -1,0 +1,7 @@
+INDEX VERSION 1.4+B:\Archivos UADE\10 cuatrimestre\Seminario I\Proyecto\Negocio\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+1685859473.index
+2802391003.index
+2458230336.index
+1983487216.index
+3087053241.index
+2575384228.index

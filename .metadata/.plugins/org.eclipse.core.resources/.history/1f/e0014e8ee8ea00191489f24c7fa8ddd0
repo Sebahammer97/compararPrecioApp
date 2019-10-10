@@ -1,0 +1,37 @@
+package modelo;
+
+import java.util.HashSet;
+import java.util.Set;
+
+public class Local {
+
+	private int id;
+	private String nombre;
+	private Set<Producto> productos = new HashSet<Producto>();
+	private float distancia;
+	
+	public Local(int id, String nombre, Set<Producto> productos, float distancia) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.productos = productos;
+		this.distancia = distancia;
+	}
+
+	public float getDistancia() {
+		return distancia;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public Set<Producto> getProductos() {
+		return productos;
+	}
+
+}

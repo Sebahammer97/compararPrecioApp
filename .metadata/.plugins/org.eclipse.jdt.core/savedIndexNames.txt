@@ -1,0 +1,23 @@
+INDEX VERSION 1.131+B:\Archivos UADE\10 cuatrimestre\Seminario I\Proyecto\Negocio\.metadata\.plugins\org.eclipse.jdt.core
+1024845909.index
+2031199512.index
+2834595906.index
+3194810170.index
+2194821267.index
+1961137450.index
+1136828160.index
+3194900268.index
+380548833.index
+2192701985.index
+1898885145.index
+474299069.index
+1103301132.index
+2799761711.index
+1685859473.index
+1459138182.index
+2642398051.index
+2830900099.index
+4115812529.index
+108344803.index
+4104087344.index
+4217586754.index

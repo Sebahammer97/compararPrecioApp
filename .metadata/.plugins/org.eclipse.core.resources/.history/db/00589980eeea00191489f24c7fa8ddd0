@@ -1,0 +1,14 @@
+package test;
+
+import controlador.Controlador;
+import modelo.ListaCompra;
+
+public class Test {
+
+	public static void main(String[] args) {
+		ListaCompra lc = new ListaCompra();
+		lc.
+		Controlador.getInstancia().procesarListaCompra(lc);
+	}
+
+}
