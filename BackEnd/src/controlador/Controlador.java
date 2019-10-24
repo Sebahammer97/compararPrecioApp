@@ -4,11 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import modelo.ItemListaCompra;
+import modelo.ItemLista;
 import modelo.ItemResultado;
-import modelo.ListaCompra;
+import modelo.Lista;
 import modelo.Local;
-import modelo.Producto;
 import modelo.ProductoPrecio;
 
 public class Controlador {
@@ -24,7 +23,7 @@ public class Controlador {
 		return instancia;
 	}
 	
-	public ItemResultado procesarListaCompra(ListaCompra compra) {
+	public ItemResultado procesarListaCompra(Lista compra) {
 		//Obtener todos los locales
 		List<Local> locales = obtenerLocales();
 		ItemResultado resultado = null;
@@ -32,7 +31,7 @@ public class Controlador {
 		for(Local l: locales)
 		{
 			float presupuesto = 0;
-			for(ItemListaCompra i: compra.getLista())
+			for(ItemLista i: compra.getLista())
 			{
 				presupuesto += l.getPrecioDeProducto(i.getProducto().getId());
 			}
@@ -63,7 +62,7 @@ public class Controlador {
 		return resultado;
 	}
 	
-	private List<Local> obtenerLocales() {
+	public List<Local> obtenerLocales() {
 		List<ProductoPrecio> productos1 = new ArrayList<ProductoPrecio>();
 		List<ProductoPrecio> productos2 = new ArrayList<ProductoPrecio>();
 		List<ProductoPrecio> productos3 = new ArrayList<ProductoPrecio>();
@@ -74,35 +73,35 @@ public class Controlador {
 		
 		Random x = new Random();
 		
-		for(int i = 1; i <6; i++)
+		for(int i = 1; i <5; i++)
 		{
 			productos1.add(new ProductoPrecio(i, x.nextInt(50)+10));	
 		}
 		Local l = new Local(1, "Coto", productos1, 3.5f);
 		locales.add(l);
 		
-		for(int i = 1; i <6; i++)
+		for(int i = 1; i <5; i++)
 		{
 			productos2.add(new ProductoPrecio(i, x.nextInt(50)+10));	
 		}
 		l = new Local(2, "Disco", productos2, 2.5f);
 		locales.add(l);
 		
-		for(int i = 1; i <6; i++)
+		for(int i = 1; i <5; i++)
 		{
 			productos3.add(new ProductoPrecio(i, x.nextInt(50)+10));	
 		}
 		l = new Local(3, "Carrefour", productos3, 1.0f);
 		locales.add(l);
 		
-		for(int i = 1; i <6; i++)
+		for(int i = 1; i <5; i++)
 		{
 			productos4.add(new ProductoPrecio(i, x.nextInt(50)+10));	
 		}
 		l = new Local(4, "Walt-Mart", productos4, 8.5f);
 		locales.add(l);
 		
-		for(int i = 1; i <6; i++)
+		for(int i = 1; i <5; i++)
 		{
 			productos5.add(new ProductoPrecio(i, x.nextInt(50)+10));	
 		}

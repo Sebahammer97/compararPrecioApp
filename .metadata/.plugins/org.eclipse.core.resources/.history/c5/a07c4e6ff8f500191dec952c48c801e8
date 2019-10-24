@@ -1,0 +1,16 @@
+package daos;
+
+public class ItemListaDAO
+{
+private static ItemListaDAO instancia;
+	
+	private ItemListaDAO() {}
+	
+	public static ItemListaDAO getInstancia()
+	{
+		if(instancia==null)
+			instancia = new ItemListaDAO();
+		return instancia;
+	}
+	
+}

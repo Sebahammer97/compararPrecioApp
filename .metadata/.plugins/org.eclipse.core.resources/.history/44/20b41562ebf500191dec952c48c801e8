@@ -1,0 +1,10 @@
+package daos;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
+import hibernate.HibernateUtil;
+
+public class ProductoDAO {
+
+}

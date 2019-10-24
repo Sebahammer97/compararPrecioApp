@@ -1,39 +1,45 @@
 package modelo;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Local {
 
 	private int id;
-	private String nombre;
-	private List<ProductoPrecio> productos = new ArrayList<ProductoPrecio>();
-	private float distancia;
+	private Cadena cadena;
+	private String direccion;
+	private float latitud;
+	private float longitud;
 	
-	public Local(int id, String nombre, List<ProductoPrecio> productos, float distancia) {
+	public Local(int id, Cadena cadena, String direccion, float latitud, float longitud) {
 		super();
 		this.id = id;
-		this.nombre = nombre;
-		this.productos = productos;
-		this.distancia = distancia;
-	}
-
-	public float getDistancia() {
-		return distancia;
+		this.cadena = cadena;
+		this.direccion = direccion;
+		this.latitud = latitud;
+		this.longitud = longitud;
 	}
 
 	public int getId() {
 		return id;
 	}
 
-	public String getNombre() {
-		return nombre;
+	public Cadena getCadena() {
+		return cadena;
 	}
 
-	public List<ProductoPrecio> getProductos() {
-		return productos;
+	public String getDireccion() {
+		return direccion;
+	}
+
+	public float getLatitud() {
+		return latitud;
+	}
+
+	public float getLongitud() {
+		return longitud;
 	}
 	
+	
+	
+	/*
 	public float getPrecioDeProducto(int id) {
 		for(ProductoPrecio p: productos)
 		{
@@ -42,7 +48,19 @@ public class Local {
 				return p.getPrecio();
 			}
 		}
-		return -1;
+		return Float.MAX_VALUE;
 	}
-
+	
+	public boolean tenesProductoById(int idProducto)
+	{
+		for(ProductoPrecio p: productos)
+		{
+			if(p.getId() == idProducto)
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+	*/
 }

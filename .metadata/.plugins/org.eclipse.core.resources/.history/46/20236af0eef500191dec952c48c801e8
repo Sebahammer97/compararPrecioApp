@@ -1,0 +1,15 @@
+package daos;
+
+public class LocalDAO {
+	
+	private static LocalDAO instancia;
+	
+	private LocalDAO() {}
+	
+	public static LocalDAO getInstancia() {
+		if(instancia==null)
+			instancia = new LocalDAO();
+		return instancia;
+	}
+
+}

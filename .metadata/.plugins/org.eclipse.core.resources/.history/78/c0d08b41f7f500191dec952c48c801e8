@@ -1,0 +1,20 @@
+package daos;
+
+import exceptions.ListaException;
+
+public class ListaDAO {
+
+	private static ListaDAO instancia;
+	
+	private ListaDAO() {}
+	
+	public static ListaDAO getInstancia() {
+		if(instancia==null)
+			instancia = new ListaDAO();
+		return instancia;
+	}
+	
+	public void saveList(Lista l) throws ListaException {
+		
+	}
+}

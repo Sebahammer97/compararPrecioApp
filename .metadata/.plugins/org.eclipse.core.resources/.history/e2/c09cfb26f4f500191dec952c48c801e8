@@ -1,0 +1,36 @@
+package modelo;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Lista {
+
+	private int id;
+	private String nombre;
+	private String descripcion;
+	private List<ItemLista> lista;
+	
+	public Lista(int id, String nombre, String descripcion, List<ItemLista> lista) {
+		this.id = id;
+		this.nombre = nombre;
+		this.descripcion = descripcion;
+		this.lista = lista;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public List<ItemLista> getLista() {
+		return lista;
+	}
+	
+}
