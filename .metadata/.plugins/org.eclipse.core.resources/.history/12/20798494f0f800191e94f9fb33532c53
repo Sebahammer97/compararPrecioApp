@@ -3,7 +3,6 @@ hibernate.connection.driver_class net.sourceforge.jtds.jdbc.Driver
 hibernate.connection.url jdbc:jtds:sqlserver://localhost:1433;databaseName=SEM
 hibernate.connection.username SSD2
 hibernate.connection.password appdist
-# appdist o distapp segun la persona que esté moviendo el proyecto
 hibernate.connection.pool_size 2
 hibernate.connection.autocommit true
 

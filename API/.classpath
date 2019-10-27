@@ -26,16 +26,16 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry combineaccessrules="false" kind="src" path="/BackEnd"/>
-	<classpathentry kind="lib" path="D:/ProyectosEclipse/BackEnd_v3/lib/antlr-2.7.6.jar"/>
-	<classpathentry kind="lib" path="D:/ProyectosEclipse/BackEnd_v3/lib/commons-collections-3.1.jar"/>
-	<classpathentry kind="lib" path="D:/ProyectosEclipse/BackEnd_v3/lib/commons-logging-1.1.1.jar"/>
-	<classpathentry kind="lib" path="D:/ProyectosEclipse/BackEnd_v3/lib/dom4j-1.6.1.jar"/>
-	<classpathentry kind="lib" path="D:/ProyectosEclipse/BackEnd_v3/lib/ejb3-persistence.jar"/>
-	<classpathentry kind="lib" path="D:/ProyectosEclipse/BackEnd_v3/lib/hibernate3.jar"/>
-	<classpathentry kind="lib" path="D:/ProyectosEclipse/BackEnd_v3/lib/hibernate-annotations.jar"/>
-	<classpathentry kind="lib" path="D:/ProyectosEclipse/BackEnd_v3/lib/hibernate-commons-annotations.jar"/>
-	<classpathentry kind="lib" path="D:/ProyectosEclipse/BackEnd_v3/lib/javassist-3.4.GA.jar"/>
-	<classpathentry kind="lib" path="D:/ProyectosEclipse/BackEnd_v3/lib/jta-1.1.jar"/>
-	<classpathentry kind="lib" path="D:/ProyectosEclipse/BackEnd_v3/lib/jtds-1.2.5.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Viviana/Documents/UADE/5 Año/2 Cuatrimestre/Seminario 1/kra/tpo/lib/antlr-2.7.6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Viviana/Documents/UADE/5 Año/2 Cuatrimestre/Seminario 1/kra/tpo/lib/commons-collections-3.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Viviana/Documents/UADE/5 Año/2 Cuatrimestre/Seminario 1/kra/tpo/lib/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Viviana/Documents/UADE/5 Año/2 Cuatrimestre/Seminario 1/kra/tpo/lib/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Viviana/Documents/UADE/5 Año/2 Cuatrimestre/Seminario 1/kra/tpo/lib/ejb3-persistence.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Viviana/Documents/UADE/5 Año/2 Cuatrimestre/Seminario 1/kra/tpo/lib/hibernate3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Viviana/Documents/UADE/5 Año/2 Cuatrimestre/Seminario 1/kra/tpo/lib/hibernate-annotations.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Viviana/Documents/UADE/5 Año/2 Cuatrimestre/Seminario 1/kra/tpo/lib/hibernate-commons-annotations.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Viviana/Documents/UADE/5 Año/2 Cuatrimestre/Seminario 1/kra/tpo/lib/javassist-3.4.GA.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Viviana/Documents/UADE/5 Año/2 Cuatrimestre/Seminario 1/kra/tpo/lib/jta-1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Viviana/Documents/UADE/5 Año/2 Cuatrimestre/Seminario 1/kra/tpo/lib/jtds-1.2.5.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
