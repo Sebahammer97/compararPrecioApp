@@ -1,7 +1,0 @@
-INDEX VERSION 1.4+C:\Users\Viviana\Documents\UADE\5 Año\2 Cuatrimestre\Seminario 1\kra\tpo\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-2304524544.index
-1723396284.index
-801573249.index
-461589105.index
-1685859473.index
-3332167586.index

@@ -46,16 +46,16 @@ public class Test {
 		System.out.println("-------------------------------------------------------");
 		System.out.println("-------------------------------------------------------");
 		 */
-/*
+		/*
 		for(Local l: LocalDAO.getInstancia().getLocales())
 		{	
 			System.out.print(l.getListado().size());
 			l.cargarListadoDePrecios();
 			System.out.println(" | "+l.getListado().size());
 			System.out.println("-------------------------------------------------------");
-			
+
 		}
-*/	
+		 */	
 		/*
 		Lista lc = new Lista();
 		for(int i = 1; i <5; i++)
@@ -69,24 +69,24 @@ public class Test {
 		System.out.println("Mejor Ruta:\t"+resultado.getLocal().getNombre()+"\t"+resultado.getPresupuesto()+"\t"+resultado.getLocal().getDistancia()+"");
 
 		System.out.println("-------------------------------------------------------");	
-*/
+		 */
 		ArrayList<Producto> productos = ProductoDAO.getInstancia().getProductos();
 		ArrayList<Local> locales = LocalDAO.getInstancia().getLocales();
-		
+
 		for(Local l: locales)
 		{
 			l.cargarListadoDePrecios();
 		}
-		
+
 		ArrayList<ItemLista> listado = new ArrayList<ItemLista>();
 		listado.add(new ItemLista(0, productos.get(0), 1));
 		listado.add(new ItemLista(0, productos.get(1), 1));
 		listado.add(new ItemLista(0, productos.get(2), 1));
-		
+
 		Lista lc = new Lista(0, "010", "testeo", listado);
-		
+
 		System.out.println("\nMonoLocal:");	
-		
+
 		ArrayList<CompraDecision> test1 = Controlador.getInstancia().procesarListaCompra(lc, -34.6167f, -58.3817f, 0.1f, "Precio_Distancia", "Mono_Local");
 
 		for(CompraDecision i: test1)
@@ -97,11 +97,11 @@ public class Test {
 		System.out.println("\nMultiLocal:");
 
 		ArrayList<CompraDecision> test2 = Controlador.getInstancia().procesarListaCompra(lc, -34.6167f, -58.3817f, 0.1f, "Precio_Distancia", "Multi_Local");
-		
+
 		for(CompraDecision i: test2)
 		{
 			System.out.println(i.contarDecision());
 		}
+		
 	}
-
 }

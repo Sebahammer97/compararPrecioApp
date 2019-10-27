@@ -1,5 +1,0 @@
-INDEX VERSION 1.131
-C:\Users\Viviana\Documents\UADE\5 Año\2 Cuatrimestre\Seminario 1\kra\tpo\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2462018293.index
-\API\src\main\java
-D:\ProyectosEclipse\BackEnd_v3\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2462018293.index
-\API\src\main\java
