@@ -3,23 +3,17 @@ package test;
 import java.util.ArrayList;
 
 import controlador.Controlador;
-import daos.CadenaDAO;
 import daos.LocalDAO;
 import daos.ProductoDAO;
-import daos.ProductoPrecioDAO;
 import exceptions.CadenaException;
 import exceptions.LocalException;
 import exceptions.ProductoException;
 import exceptions.ProductoPrecioException;
-import modelo.Cadena;
 import modelo.ItemLista;
 import modelo.Lista;
 import modelo.Local;
 import modelo.Producto;
-import modelo.ProductoPrecio;
 import procesado.CompraDecision;
-import procesado.ItemResultado;
-import procesado.ProcesadorDeListas;
 
 public class Test {
 
@@ -102,6 +96,8 @@ public class Test {
 		{
 			System.out.println(i.contarDecision());
 		}
+		
+		System.out.println(Controlador.getInstancia().obtenerProductos());
 		
 	}
 }
