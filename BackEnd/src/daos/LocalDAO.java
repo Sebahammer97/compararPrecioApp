@@ -24,8 +24,8 @@ public class LocalDAO {
 		return instancia;
 	}
 
-	public List<Local> getLocales() throws LocalException {
-		List<Local> resultado = new ArrayList<Local>();
+	public ArrayList<Local> getLocales() throws LocalException {
+		ArrayList<Local> resultado = new ArrayList<Local>();
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session s = sf.getCurrentSession();
 		s.beginTransaction();
@@ -33,7 +33,7 @@ public class LocalDAO {
 		List<LocalEntity> locales = s.createQuery("from LocalEntity").list();
 		for(LocalEntity l : locales)
 			resultado.add(toNegocio(l));
-		return null;
+		return resultado;
 	}
 
 	public Local toNegocio(LocalEntity l) throws LocalException {

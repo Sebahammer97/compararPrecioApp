@@ -3,7 +3,6 @@ package daos;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-import entities.ItemListaEntity;
 import entities.ListaEntity;
 import exceptions.ListaException;
 import hibernate.HibernateUtil;
@@ -43,10 +42,11 @@ public class ListaDAO {
 			ListaEntity le = new ListaEntity(l.getNombre(), l.getDescripcion());
 			s.save(le);
 			s.getTransaction().commit();
+			le.setId(obtenerUltimoId());
 			
 			for(ItemLista i: l.getLista())
 			{
-				ItemListaDAO.getInstancia().save(i, obtenerUltimoId());
+				ItemListaDAO.getInstancia().save(i, le);
 			}
 			} catch (Exception e) {
 				throw new ListaException("No se pudo guardar la Lista");

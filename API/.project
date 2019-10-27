@@ -3,6 +3,7 @@
 	<name>API</name>
 	<comment></comment>
 	<projects>
+		<project>BackEnd</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

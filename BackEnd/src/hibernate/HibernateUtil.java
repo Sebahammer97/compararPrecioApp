@@ -3,7 +3,13 @@ package hibernate;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
 
-//import entities.DuenioEntity;
+import entities.CadenaEntity;
+import entities.CategoriaEntity;
+import entities.ItemListaEntity;
+import entities.ListaEntity;
+import entities.LocalEntity;
+import entities.ProductoEntity;
+import entities.ProductoPrecioEntity;
 
 public class HibernateUtil
 {
@@ -13,8 +19,13 @@ public class HibernateUtil
 		try
 		{
 			AnnotationConfiguration config = new AnnotationConfiguration();
-
-			//config.addAnnotatedClass(DuenioEntity.class);
+			config.addAnnotatedClass(CadenaEntity.class);
+			config.addAnnotatedClass(CategoriaEntity.class);
+			config.addAnnotatedClass(ItemListaEntity.class);
+			config.addAnnotatedClass(ListaEntity.class);
+			config.addAnnotatedClass(LocalEntity.class);
+			config.addAnnotatedClass(ProductoEntity.class);
+			config.addAnnotatedClass(ProductoPrecioEntity.class);
 
 			sessionFactory = config.buildSessionFactory();
 		}

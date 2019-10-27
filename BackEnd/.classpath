@@ -2,19 +2,20 @@
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="B:/Archivos UADE/10 cuatrimestre/Seminario I/Proyecto/Negocio/lib/antlr-2.7.6.jar"/>
-	<classpathentry kind="lib" path="B:/Archivos UADE/10 cuatrimestre/Seminario I/Proyecto/Negocio/lib/commons-collections-3.1.jar"/>
-	<classpathentry kind="lib" path="B:/Archivos UADE/10 cuatrimestre/Seminario I/Proyecto/Negocio/lib/commons-logging-1.1.1.jar"/>
-	<classpathentry kind="lib" path="B:/Archivos UADE/10 cuatrimestre/Seminario I/Proyecto/Negocio/lib/dom4j-1.6.1.jar"/>
-	<classpathentry kind="lib" path="B:/Archivos UADE/10 cuatrimestre/Seminario I/Proyecto/Negocio/lib/ejb3-persistence.jar"/>
-	<classpathentry kind="lib" path="B:/Archivos UADE/10 cuatrimestre/Seminario I/Proyecto/Negocio/lib/hibernate3.jar"/>
-	<classpathentry kind="lib" path="B:/Archivos UADE/10 cuatrimestre/Seminario I/Proyecto/Negocio/lib/hibernate-annotations.jar"/>
-	<classpathentry kind="lib" path="B:/Archivos UADE/10 cuatrimestre/Seminario I/Proyecto/Negocio/lib/hibernate-commons-annotations.jar"/>
-	<classpathentry kind="lib" path="B:/Archivos UADE/10 cuatrimestre/Seminario I/Proyecto/Negocio/lib/javassist-3.4.GA.jar"/>
-	<classpathentry kind="lib" path="B:/Archivos UADE/10 cuatrimestre/Seminario I/Proyecto/Negocio/lib/jta-1.1.jar"/>
-	<classpathentry kind="lib" path="B:/Archivos UADE/10 cuatrimestre/Seminario I/Proyecto/Negocio/lib/jtds-1.2.5.jar"/>
-	<classpathentry kind="lib" path="B:/Archivos UADE/10 cuatrimestre/Seminario I/Proyecto/Negocio/lib/slf4j-api-1.5.6.jar"/>
-	<classpathentry kind="lib" path="B:/Archivos UADE/10 cuatrimestre/Seminario I/Proyecto/Negocio/lib/slf4j-simple-1.5.6.jar"/>
-	<classpathentry kind="lib" path="B:/Archivos UADE/10 cuatrimestre/Seminario I/Proyecto/Negocio/lib/sqljdbc4.jar"/>
+	<classpathentry kind="lib" path="D:/ProyectosEclipse/BackEnd_v3/lib/antlr-2.7.6.jar"/>
+	<classpathentry kind="lib" path="D:/ProyectosEclipse/BackEnd_v3/lib/commons-collections-3.1.jar"/>
+	<classpathentry kind="lib" path="D:/ProyectosEclipse/BackEnd_v3/lib/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="D:/ProyectosEclipse/BackEnd_v3/lib/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="D:/ProyectosEclipse/BackEnd_v3/lib/ejb3-persistence.jar"/>
+	<classpathentry kind="lib" path="D:/ProyectosEclipse/BackEnd_v3/lib/hibernate3.jar"/>
+	<classpathentry kind="lib" path="D:/ProyectosEclipse/BackEnd_v3/lib/hibernate-annotations.jar"/>
+	<classpathentry kind="lib" path="D:/ProyectosEclipse/BackEnd_v3/lib/hibernate-commons-annotations.jar"/>
+	<classpathentry kind="lib" path="D:/ProyectosEclipse/BackEnd_v3/lib/javassist-3.4.GA.jar"/>
+	<classpathentry kind="lib" path="D:/ProyectosEclipse/BackEnd_v3/lib/jta-1.1.jar"/>
+	<classpathentry kind="lib" path="D:/ProyectosEclipse/BackEnd_v3/lib/jtds-1.2.5.jar"/>
+	<classpathentry kind="lib" path="D:/ProyectosEclipse/BackEnd_v3/lib/slf4j-api-1.5.6.jar"/>
+	<classpathentry kind="lib" path="D:/ProyectosEclipse/BackEnd_v3/lib/slf4j-simple-1.5.6.jar"/>
+	<classpathentry kind="lib" path="D:/ProyectosEclipse/BackEnd_v3/lib/sqljdbc4.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -1,16 +1,2 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="java.util.HashSet"/>
-<fullyQualifiedTypeName name="modelo.ItemResultado"/>
-<fullyQualifiedTypeName name="modelo.ListaCompra"/>
-<fullyQualifiedTypeName name="java.util.List"/>
-<fullyQualifiedTypeName name="modelo.Local"/>
-<fullyQualifiedTypeName name="java.util.Set"/>
-<fullyQualifiedTypeName name="modelo.ItemListaCompra"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
-<fullyQualifiedTypeName name="modelo.ProductoPrecio"/>
-<fullyQualifiedTypeName name="java.util.Random"/>
-<fullyQualifiedTypeName name="controlador.Controlador"/>
-<fullyQualifiedTypeName name="modelo.Producto"/>
-<fullyQualifiedTypeName name="java.lang.Float"/>
-</qualifiedTypeNameHistroy>
+<qualifiedTypeNameHistroy/>

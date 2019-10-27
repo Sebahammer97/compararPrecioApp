@@ -1,6 +1,8 @@
 package entities;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -11,17 +13,28 @@ import javax.persistence.Table;
 public class ItemListaEntity {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
 	@ManyToOne
 	@JoinColumn(name="idLista")
 	private ListaEntity lista;
+	
 	@ManyToOne
-	@JoinColumn(name="idProducto_Precio")
-	private ProductoPrecioEntity productoPrecio;
+	@JoinColumn(name="idProducto")
+	private ProductoEntity producto;
 	
 	private int cantidad;
 	
-	public ItemListaEntity () {}
+	public ItemListaEntity(){
+		super();
+	}
+	
+	public ItemListaEntity (ListaEntity lista, ProductoEntity producto, int cantidad) {
+		this.lista = lista;
+		this.producto = producto;
+		this.cantidad = cantidad;
+	}
 
 	public Integer getId() {
 		return id;
@@ -39,12 +52,12 @@ public class ItemListaEntity {
 		this.lista = lista;
 	}
 
-	public ProductoPrecioEntity getProductoPrecio() {
-		return productoPrecio;
+	public ProductoEntity getProducto() {
+		return producto;
 	}
 
-	public void setProductoPrecio(ProductoPrecioEntity productoPrecio) {
-		this.productoPrecio = productoPrecio;
+	public void setProducto(ProductoEntity producto) {
+		this.producto = producto;
 	}
 
 	public int getCantidad() {

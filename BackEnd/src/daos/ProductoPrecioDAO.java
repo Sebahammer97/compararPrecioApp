@@ -25,8 +25,8 @@ public class ProductoPrecioDAO {
 		return instancia;
 	}
 	
-	public List<ProductoPrecio> getProductoPrecioByLocal(int idLocal) throws ProductoPrecioException {
-		List<ProductoPrecio> resultado = new ArrayList<ProductoPrecio>();
+	public ArrayList<ProductoPrecio> getProductoPrecioByLocal(int idLocal) throws ProductoPrecioException {
+		ArrayList<ProductoPrecio> resultado = new ArrayList<ProductoPrecio>();
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session s = sf.getCurrentSession();
 		s.beginTransaction();
@@ -36,9 +36,21 @@ public class ProductoPrecioDAO {
 			.list();
 		for(ProductoPrecioEntity p : productosPrecios)
 			resultado.add(toNegocio(p));
-		return null;
+		return resultado;
 	}
 
+	public ProductoPrecio getProductoPrecioByLocalAndProducto(int idLocal, int idProducto) throws ProductoPrecioException {
+		SessionFactory sf = HibernateUtil.getSessionFactory();
+		Session s = sf.getCurrentSession();
+		s.beginTransaction();
+		ProductoPrecioEntity entidad = (ProductoPrecioEntity) s.createQuery("from ProductoPrecioEntity p where p.local = ? and p.producto = ?")
+			.setInteger(0, idLocal)
+			.setInteger(1, idProducto)
+			.uniqueResult();
+		ProductoPrecio resultado = toNegocio(entidad);
+		return resultado;
+	}
+	
 	public ProductoPrecio toNegocio(ProductoPrecioEntity p) throws ProductoPrecioException {
 		try {
 			if(p != null) {

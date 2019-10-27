@@ -24,8 +24,8 @@ public class ProductoDAO {
 		return instancia;
 	}
 	
-	public List<Producto> getProductos() throws ProductoException {
-		List<Producto> resultado = new ArrayList<Producto>();
+	public ArrayList<Producto> getProductos() throws ProductoException {
+		ArrayList<Producto> resultado = new ArrayList<Producto>();
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session s = sf.getCurrentSession();
 		s.beginTransaction();
@@ -33,7 +33,7 @@ public class ProductoDAO {
 		List<ProductoEntity> productos = s.createQuery("from ProductoEntity").list();
 		for(ProductoEntity p : productos)
 			resultado.add(toNegocio(p));
-		return null;
+		return resultado;
 	}
 
 	public Producto toNegocio(ProductoEntity p) throws ProductoException {

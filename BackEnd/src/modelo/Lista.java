@@ -1,15 +1,15 @@
 package modelo;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class Lista {
 
 	private int id;
 	private String nombre;
 	private String descripcion;
-	private List<ItemLista> items;
+	private ArrayList<ItemLista> items;
 	
-	public Lista(int id, String nombre, String descripcion, List<ItemLista> items) {
+	public Lista(int id, String nombre, String descripcion, ArrayList<ItemLista> items) {
 		this.id = id;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
@@ -28,7 +28,7 @@ public class Lista {
 		return descripcion;
 	}
 
-	public List<ItemLista> getLista() {
+	public ArrayList<ItemLista> getLista() {
 		return items;
 	}
 	

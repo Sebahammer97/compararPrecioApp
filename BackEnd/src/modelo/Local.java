@@ -1,5 +1,10 @@
 package modelo;
 
+import java.util.ArrayList;
+
+import daos.ProductoPrecioDAO;
+import exceptions.ProductoPrecioException;
+
 public class Local {
 
 	private int id;
@@ -7,6 +12,7 @@ public class Local {
 	private String direccion;
 	private float latitud;
 	private float longitud;
+	private ArrayList<ProductoPrecio> listado;
 	
 	public Local(int id, Cadena cadena, String direccion, float latitud, float longitud) {
 		super();
@@ -15,6 +21,7 @@ public class Local {
 		this.direccion = direccion;
 		this.latitud = latitud;
 		this.longitud = longitud;
+		listado = new ArrayList<ProductoPrecio>();
 	}
 
 	public int getId() {
@@ -37,13 +44,25 @@ public class Local {
 		return longitud;
 	}
 	
+	public ArrayList<ProductoPrecio> getListado()
+	{
+		return listado;
+	}
 	
+	public void cargarListadoDePrecios()
+	{
+		try {
+			this.listado = ProductoPrecioDAO.getInstancia().getProductoPrecioByLocal(this.id);
+		} catch (ProductoPrecioException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
-	/*
 	public float getPrecioDeProducto(int id) {
-		for(ProductoPrecio p: productos)
+		for(ProductoPrecio p: listado)
 		{
-			if(p.getId() == id)
+			if(p.getProducto().getId() == id)
 			{
 				return p.getPrecio();
 			}
@@ -53,14 +72,14 @@ public class Local {
 	
 	public boolean tenesProductoById(int idProducto)
 	{
-		for(ProductoPrecio p: productos)
+		for(ProductoPrecio p: listado)
 		{
-			if(p.getId() == idProducto)
+			if(p.getProducto().getId() == idProducto)
 			{
 				return true;
 			}
 		}
 		return false;
 	}
-	*/
+	
 }
