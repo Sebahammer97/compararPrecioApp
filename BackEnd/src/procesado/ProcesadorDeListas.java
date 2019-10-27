@@ -21,7 +21,7 @@ public class ProcesadorDeListas
 		return instancia;
 	}
 
-	public ArrayList<CompraDecision> procesarLista_PrecioDistancia_MonoLocal(final Lista listaCompra, final ArrayList<Local> locales, final float latitudActual, final float longitudActual, final float maxDistancia)
+	public ArrayList<CompraDecision> procesarLista_PrecioDistancia_MonoLocal(final Lista listaCompra, final ArrayList<Local> locales)
 	{
 		//----------||Analisis de los Locales||-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 		
@@ -99,7 +99,7 @@ public class ProcesadorDeListas
 		return decisiones;
 	}
 
-	public ArrayList<CompraDecision> procesarLista_PrecioDistancia_MultiLocal(final Lista listaCompra, final ArrayList<Local> locales, final float latitudActual, final float longitudActual, final float maxDistancia)
+	public ArrayList<CompraDecision> procesarLista_PrecioDistancia_MultiLocal(final Lista listaCompra, final ArrayList<Local> locales)
 	{
 		//----------||Analisis de los Locales||-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 		

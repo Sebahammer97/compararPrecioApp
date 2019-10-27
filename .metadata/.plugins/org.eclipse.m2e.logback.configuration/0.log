@@ -1,0 +1,44 @@
+2019-10-24 12:04:29,055 [Worker-7: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2019-10-25 15:15:33,213 [Worker-7: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2019-10-25 23:23:43,450 [Worker-5: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2019-10-26 11:06:09,368 [Worker-3: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2019-10-26 13:47:12,018 [Worker-82: Debug Source Lookup] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/hibernate/hibernate-core/3.3.1.GA/hibernate-core-3.3.1.GA-sources.jar
+2019-10-26 13:48:09,002 [Worker-82: Debug Source Lookup] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/hibernate/hibernate-core/3.3.1.GA/hibernate-core-3.3.1.GA-sources.jar
+2019-10-26 13:48:10,226 [Worker-82: Debug Source Lookup] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/hibernate/hibernate-jmx/3.3.1.GA/hibernate-jmx-3.3.1.GA-sources.jar
+2019-10-26 13:48:10,549 [Worker-82: Debug Source Lookup] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/hibernate/hibernate-jmx/3.3.1.GA/hibernate-jmx-3.3.1.GA-sources.jar
+2019-10-26 13:48:11,459 [Worker-82: Debug Source Lookup] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/hibernate/hibernate-ehcache/3.3.1.GA/hibernate-ehcache-3.3.1.GA-sources.jar
+2019-10-26 13:48:11,758 [Worker-82: Debug Source Lookup] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/hibernate/hibernate-ehcache/3.3.1.GA/hibernate-ehcache-3.3.1.GA-sources.jar
+2019-10-26 13:48:12,679 [Worker-82: Debug Source Lookup] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/hibernate/hibernate-jbosscache/3.3.1.GA/hibernate-jbosscache-3.3.1.GA-sources.jar
+2019-10-26 13:48:12,994 [Worker-82: Debug Source Lookup] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/hibernate/hibernate-jbosscache/3.3.1.GA/hibernate-jbosscache-3.3.1.GA-sources.jar
+2019-10-26 13:48:13,917 [Worker-82: Debug Source Lookup] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/hibernate/hibernate-jbosscache2/3.3.1.GA/hibernate-jbosscache2-3.3.1.GA-sources.jar
+2019-10-26 13:48:14,496 [Worker-82: Debug Source Lookup] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/hibernate/hibernate-jbosscache2/3.3.1.GA/hibernate-jbosscache2-3.3.1.GA-sources.jar
+2019-10-26 13:48:15,414 [Worker-82: Debug Source Lookup] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/hibernate/hibernate-oscache/3.3.1.GA/hibernate-oscache-3.3.1.GA-sources.jar
+2019-10-26 13:48:15,697 [Worker-82: Debug Source Lookup] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/hibernate/hibernate-oscache/3.3.1.GA/hibernate-oscache-3.3.1.GA-sources.jar
+2019-10-26 13:48:16,607 [Worker-82: Debug Source Lookup] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/hibernate/hibernate-swarmcache/3.3.1.GA/hibernate-swarmcache-3.3.1.GA-sources.jar
+2019-10-26 13:48:16,865 [Worker-82: Debug Source Lookup] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/hibernate/hibernate-swarmcache/3.3.1.GA/hibernate-swarmcache-3.3.1.GA-sources.jar
+2019-10-26 13:48:17,738 [Worker-82: Debug Source Lookup] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/hibernate/hibernate-c3p0/3.3.1.GA/hibernate-c3p0-3.3.1.GA-sources.jar
+2019-10-26 13:48:17,992 [Worker-82: Debug Source Lookup] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/hibernate/hibernate-c3p0/3.3.1.GA/hibernate-c3p0-3.3.1.GA-sources.jar
+2019-10-26 13:48:18,997 [Worker-82: Debug Source Lookup] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/hibernate/hibernate-proxool/3.3.1.GA/hibernate-proxool-3.3.1.GA-sources.jar
+2019-10-26 13:48:19,277 [Worker-82: Debug Source Lookup] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/hibernate/hibernate-proxool/3.3.1.GA/hibernate-proxool-3.3.1.GA-sources.jar
+2019-10-26 19:28:16,282 [Worker-255: Building workspace] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.seminario:proyecto:1.0.0-BUILD-SNAPSHOT @ D:\ProyectosEclipse\BackEnd_v3\API\pom.xml.
+2019-10-26 19:28:24,118 [Worker-255: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2019-10-26 19:28:24,174 [Worker-255: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-10-26 19:28:24,184 [Worker-255: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2019-10-26 19:28:24,190 [Worker-255: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-10-26 19:28:25,287 [Worker-253: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2019-10-26 19:28:25,383 [Worker-253: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-10-26 19:28:25,395 [Worker-253: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2019-10-26 19:28:25,410 [Worker-253: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-10-26 19:29:21,617 [Worker-253: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2019-10-26 19:29:21,739 [Worker-253: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-10-26 19:29:21,741 [Worker-253: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2019-10-26 19:29:21,766 [Worker-253: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-10-26 19:29:43,505 [Worker-256: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2019-10-26 19:29:43,580 [Worker-256: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-10-26 19:29:43,586 [Worker-256: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2019-10-26 19:29:43,592 [Worker-256: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-10-26 21:54:06,361 [Worker-5: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2019-10-26 21:54:49,804 [Worker-12: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2019-10-26 21:54:49,814 [Worker-12: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2019-10-26 21:54:49,827 [Worker-12: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2019-10-26 21:54:49,833 [Worker-12: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
