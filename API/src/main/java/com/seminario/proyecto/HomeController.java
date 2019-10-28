@@ -17,7 +17,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import controlador.Controlador;
-import exceptions.ProductoException;
 import modelo.Producto;
 
 /**
@@ -40,7 +39,7 @@ public class HomeController {
 		
 		String formattedDate = dateFormat.format(date);
 		
-		model.addAttribute("serverTime", formattedDate );
+		model.addAttribute("serverTime", formattedDate);
 		
 		return "home";
 	}
@@ -49,9 +48,8 @@ public class HomeController {
 	@ResponseBody
 	public String verProductos() throws JsonProcessingException{
 			ObjectMapper mapper = new ObjectMapper();
-			
-			ArrayList<Producto> productos = new ArrayList<Producto>();
-			productos = Controlador.getInstancia().obtenerProductos();
+
+			 ArrayList<Producto> productos = Controlador.getInstancia().obtenerProductos();
 		
 			return mapper.writeValueAsString(productos);
 	}
