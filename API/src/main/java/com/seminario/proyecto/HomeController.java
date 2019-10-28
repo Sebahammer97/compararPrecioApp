@@ -12,6 +12,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import controlador.Controlador;
@@ -45,18 +47,12 @@ public class HomeController {
 
 	@RequestMapping(value = "/VerProductos", method = RequestMethod.GET)
 	@ResponseBody
-	public String verProductos() throws ProductoException{
-	try {
+	public String verProductos() throws JsonProcessingException{
 			ObjectMapper mapper = new ObjectMapper();
+			
 			ArrayList<Producto> productos = new ArrayList<Producto>();
-			
 			productos = Controlador.getInstancia().obtenerProductos();
-			
+		
 			return mapper.writeValueAsString(productos);
-			
-		} catch (Exception e) {
-			throw new ProductoException("No se pudo recuperar los Productos");
-		}
 	}
-	
 }

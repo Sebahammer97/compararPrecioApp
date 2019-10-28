@@ -21,7 +21,6 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry combineaccessrules="false" kind="src" path="/BackEnd"/>
 	<classpathentry kind="lib" path="C:/Users/Viviana/Documents/UADE/5/2 Cuatrimestre/Seminario 1/kra/compararPrecioApp/lib/antlr-2.7.6.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Viviana/Documents/UADE/5/2 Cuatrimestre/Seminario 1/kra/compararPrecioApp/lib/commons-collections-3.1.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Viviana/Documents/UADE/5/2 Cuatrimestre/Seminario 1/kra/compararPrecioApp/lib/commons-logging-1.1.1.jar"/>
@@ -33,5 +32,6 @@
 	<classpathentry kind="lib" path="C:/Users/Viviana/Documents/UADE/5/2 Cuatrimestre/Seminario 1/kra/compararPrecioApp/lib/javassist-3.4.GA.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Viviana/Documents/UADE/5/2 Cuatrimestre/Seminario 1/kra/compararPrecioApp/lib/jta-1.1.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Viviana/Documents/UADE/5/2 Cuatrimestre/Seminario 1/kra/compararPrecioApp/lib/jtds-1.2.5.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/BackEnd"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

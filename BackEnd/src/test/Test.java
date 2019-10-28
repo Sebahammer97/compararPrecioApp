@@ -67,11 +67,18 @@ public class Test {
 		ArrayList<Producto> productos = ProductoDAO.getInstancia().getProductos();
 		ArrayList<Local> locales = LocalDAO.getInstancia().getLocales();
 
+		for(Producto p: productos)
+		{
+			System.out.println(p.getId()+" | "+p.getNombre());
+		}
+		
 		for(Local l: locales)
 		{
 			l.cargarListadoDePrecios();
 		}
-
+		
+		//
+		
 		ArrayList<ItemLista> listado = new ArrayList<ItemLista>();
 		listado.add(new ItemLista(0, productos.get(0), 1));
 		listado.add(new ItemLista(0, productos.get(1), 1));
@@ -97,7 +104,8 @@ public class Test {
 			System.out.println(i.contarDecision());
 		}
 		
-		System.out.println(Controlador.getInstancia().obtenerProductos());
+
+		
 		
 	}
 }
