@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import entities.LocalEntity;
+import exceptions.ListaException;
 import exceptions.LocalException;
 import hibernate.HibernateUtil;
 import modelo.Cadena;
@@ -24,6 +25,19 @@ public class LocalDAO {
 		return instancia;
 	}
 
+	public Local getLocal(Integer id) throws LocalException
+	{
+		SessionFactory sf = HibernateUtil.getSessionFactory();
+		Session s = sf.getCurrentSession();
+		s.beginTransaction();
+		LocalEntity local = (LocalEntity) s.createQuery("from LocalEntity l where l.id = ?")
+		.setInteger(0, id)
+		.uniqueResult();
+		if(local != null)
+			return toNegocio(local);
+		return null;
+	}
+	
 	public ArrayList<Local> getLocales() throws LocalException {
 		ArrayList<Local> resultado = new ArrayList<Local>();
 		SessionFactory sf = HibernateUtil.getSessionFactory();
@@ -36,7 +50,23 @@ public class LocalDAO {
 		return resultado;
 	}
 
-	public Local toNegocio(LocalEntity l) throws LocalException {
+	public void saveLocal(Local l) throws ListaException
+	{
+		try {
+			SessionFactory sf = HibernateUtil.getSessionFactory();
+			Session s = sf.getCurrentSession();
+			s.beginTransaction();
+			LocalEntity local = new LocalEntity(l.getId(), CadenaDAO.getInstancia().toEntity(l.getCadena()), l.getDireccion(), l.getLatitud(), l.getLongitud());
+			s.save(local);
+			s.getTransaction().commit();
+
+			} catch (Exception e) {
+				throw new ListaException("Local Error -Fallo al guardar-");
+			}
+	}
+	
+	public Local toNegocio(LocalEntity l) throws LocalException
+	{
 		try {
 			if(l != null) {
 				Cadena cadena = CadenaDAO.getInstancia().toNegocio(l.getCadena());
@@ -44,8 +74,9 @@ public class LocalDAO {
 					return new Local(l.getId(), cadena, l.getDireccion(), l.getLatitud(), l.getLongitud());
 				}
 			}
+			
 		} catch (Exception e) {
-			throw new LocalException("No se pudo recuperar Local");
+			throw new LocalException("Local Error -Fallo al recuperar "+l.getId()+" a Negocio-");
 		}
 		return null;
 	}

@@ -34,6 +34,10 @@ public class CompraDecision
 		return precioPrevisto;
 	}
 	
+	public float getPrecioTotal() {
+		return precioPrevisto*cantidad;
+	}
+	
 	public String contarDecision()
 	{
 		return("\tCantidad: "+cantidad+"\t|\tPrecio Unitario: "+precioPrevisto+"\t|\tTotal: "+precioPrevisto*cantidad+"\t|\tProducto: "+productoAComprar.getNombre()+"\n");

@@ -1,26 +1,34 @@
 package daos;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import entities.CategoriaEntity;
+import exceptions.CadenaException;
 import exceptions.CategoriaException;
+import exceptions.ListaException;
 import hibernate.HibernateUtil;
 import modelo.Categoria;
 
-public class CategoriaDAO {
+public class CategoriaDAO
+{
 	
 	private static CategoriaDAO instancia;
 	
 	private CategoriaDAO() {}
 	
-	public static CategoriaDAO getInstancia() {
+	public static CategoriaDAO getInstancia()
+	{
 		if(instancia==null)
 			instancia = new CategoriaDAO();
 		return instancia;
 	}
 
-	public Categoria getCategoria(Integer id) throws CategoriaException {
+	public Categoria getCategoria(Integer id) throws CategoriaException
+	{
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session s = sf.getCurrentSession();
 		s.beginTransaction();
@@ -32,12 +40,51 @@ public class CategoriaDAO {
 		return null;
 	}
 
-	public Categoria toNegocio(CategoriaEntity c) throws CategoriaException {
+	public ArrayList<Categoria> getCategorias() throws CategoriaException
+	{
+		ArrayList<Categoria> resultado = new ArrayList<Categoria>();
+		SessionFactory sf = HibernateUtil.getSessionFactory();
+		Session s = sf.getCurrentSession();
+		s.beginTransaction();
+		@SuppressWarnings("unchecked")
+		List<CategoriaEntity> categorias = s.createQuery("from CategoriaEntity").list();
+		for(CategoriaEntity c : categorias)
+			resultado.add(toNegocio(c));
+		return resultado;
+	}
+	
+	public void saveCategoria(Categoria c) throws ListaException
+	{
+		try {
+			SessionFactory sf = HibernateUtil.getSessionFactory();
+			Session s = sf.getCurrentSession();
+			s.beginTransaction();
+			CategoriaEntity categoria = new CategoriaEntity(c.getId(), c.getTitulo(), c.getDescripcion());
+			s.save(categoria);
+			s.getTransaction().commit();
+
+			} catch (Exception e) {
+				throw new ListaException("Categoria Error -Fallo al guardar-");
+			}
+	}
+	
+	public Categoria toNegocio(CategoriaEntity c) throws CategoriaException
+	{
 		try {
 			return new Categoria(c.getId(), c.getTitulo(), c.getDescripcion());
+			
 		} catch (Exception e) {
-			throw new CategoriaException("No se pudo recuperar la Categoria");
+			throw new CategoriaException("Categoria Error -Fallo al transformar "+c.getId()+" a Negocio-");
 		}
 	}
-
+	
+	public CategoriaEntity toEntity(Categoria c) throws CadenaException
+	{
+		try {
+			return new CategoriaEntity(c.getId(), c.getTitulo(), c.getDescripcion());
+			
+		} catch (Exception e) {
+			throw new CadenaException("Categoria Error -Fallo al transformar "+c.getId()+" a Entidad-");
+		}
+	}
 }
