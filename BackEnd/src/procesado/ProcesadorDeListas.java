@@ -88,7 +88,7 @@ public class ProcesadorDeListas
 						Producto p = listaCompra.getLista().get(j).getProducto();
 						int c = listaCompra.getLista().get(j).getCantidad();
 						Local l = locales.get(i);
-						decisiones.add(new CompraDecision(p, c, l, l.getPrecioDeProducto(p.getId())*c));
+						decisiones.add(new CompraDecision(p, c, l, l.getPrecioDeProducto(p.getId())));
 						localesPreguntar[i] = false;
 						productosPreguntar[j] = false;
 					}
@@ -174,7 +174,7 @@ public class ProcesadorDeListas
 									Producto p = listaCompra.getLista().get(j).getProducto();
 									int c = listaCompra.getLista().get(j).getCantidad();
 									Local l = localesRevisados.get(i);
-									decisiones.add(new CompraDecision(p, c, l, l.getPrecioDeProducto(p.getId())*c));
+									decisiones.add(new CompraDecision(p, c, l, l.getPrecioDeProducto(p.getId())));
 									localesPreguntar[i] = false;
 									productosPreguntar[j] = false;
 								}

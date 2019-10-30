@@ -82,4 +82,8 @@ public class Local {
 		return false;
 	}
 	
+	public String presentarLocal()
+	{
+		return ("Local: "+cadena.getNombre()+" | Direccion: "+direccion+"\n");
+	}
 }

@@ -36,7 +36,6 @@ public class CompraDecision
 	
 	public String contarDecision()
 	{
-		return("Puede comprar "+productoAComprar.getId()+" en "+localDecidido.getId()+" a un precio de "+precioPrevisto*cantidad+" ("+precioPrevisto+"|"+cantidad+")");
+		return("\tCantidad: "+cantidad+"\t|\tPrecio Unitario: "+precioPrevisto+"\t|\tTotal: "+precioPrevisto*cantidad+"\t|\tProducto: "+productoAComprar.getNombre()+"\n");
 	}
-	
 }

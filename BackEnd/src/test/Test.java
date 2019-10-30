@@ -14,6 +14,7 @@ import modelo.Lista;
 import modelo.Local;
 import modelo.Producto;
 import procesado.CompraDecision;
+import procesado.ResultadoPosAnalisis;
 
 public class Test {
 
@@ -63,10 +64,11 @@ public class Test {
 		System.out.println("Mejor Ruta:\t"+resultado.getLocal().getNombre()+"\t"+resultado.getPresupuesto()+"\t"+resultado.getLocal().getDistancia()+"");
 
 		System.out.println("-------------------------------------------------------");	
-		 */
+*/		
 		ArrayList<Producto> productos = ProductoDAO.getInstancia().getProductos();
-		ArrayList<Local> locales = LocalDAO.getInstancia().getLocales();
-
+//		ArrayList<Local> locales = LocalDAO.getInstancia().getLocales();
+		
+/*
 		for(Producto p: productos)
 		{
 			System.out.println(p.getId()+" | "+p.getNombre());
@@ -76,36 +78,24 @@ public class Test {
 		{
 			l.cargarListadoDePrecios();
 		}
-		
-		//
+*/
 		
 		ArrayList<ItemLista> listado = new ArrayList<ItemLista>();
-		listado.add(new ItemLista(0, productos.get(0), 1));
-		listado.add(new ItemLista(0, productos.get(1), 1));
-		listado.add(new ItemLista(0, productos.get(2), 1));
+		listado.add(new ItemLista(0, productos.get(0), 2));
+		listado.add(new ItemLista(0, productos.get(1), 3));
+		listado.add(new ItemLista(0, productos.get(2), 4));
 
 		Lista lc = new Lista(0, "010", "testeo", listado);
 
-		System.out.println("\nMonoLocal:");	
-
+		System.out.println("\nMonoLocal:");
 		ArrayList<CompraDecision> test1 = Controlador.getInstancia().procesarListaCompra(lc, -34.6167f, -58.3817f, 0.1f, "Precio_Distancia", "Mono_Local");
-
-		for(CompraDecision i: test1)
-		{
-			System.out.println(i.contarDecision());
-		}
+		ResultadoPosAnalisis lector1 = new ResultadoPosAnalisis(test1);
+		System.out.println(lector1.getDecision());
 
 		System.out.println("\nMultiLocal:");
-
 		ArrayList<CompraDecision> test2 = Controlador.getInstancia().procesarListaCompra(lc, -34.6167f, -58.3817f, 0.1f, "Precio_Distancia", "Multi_Local");
-
-		for(CompraDecision i: test2)
-		{
-			System.out.println(i.contarDecision());
-		}
-		
-
-		
-		
+		ResultadoPosAnalisis lector2 = new ResultadoPosAnalisis(test2);
+		System.out.println(lector2.getDecision());
+	
 	}
 }
