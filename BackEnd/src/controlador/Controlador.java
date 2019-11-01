@@ -129,10 +129,10 @@ public class Controlador {
 			switch(opcion)
 			{
 			case "Mono_Local":
-				return ProcesadorDeListas.getInstancia().procesarLista_PrecioDistancia_MonoLocal(lista, locales);
+				return ProcesadorDeListas.getInstancia().procesarLista_PrecioDistancia_MonoLocal(lista, locales, latitudActual, longitudActual );
 				
 			case "Multi_Local":
-				return ProcesadorDeListas.getInstancia().procesarLista_PrecioDistancia_MultiLocal(lista, locales);
+				return ProcesadorDeListas.getInstancia().procesarLista_PrecioDistancia_MultiLocal(lista, locales, latitudActual, longitudActual);
 			}
 			break;
 		}

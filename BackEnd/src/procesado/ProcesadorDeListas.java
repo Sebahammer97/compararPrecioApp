@@ -3,6 +3,8 @@ package procesado;
 import java.util.ArrayList;
 import java.util.List;
 
+import daos.ListaDAO;
+import exceptions.ListaException;
 import modelo.Lista;
 import modelo.Local;
 import modelo.Producto;
@@ -21,7 +23,7 @@ public class ProcesadorDeListas
 		return instancia;
 	}
 
-	public ArrayList<CompraDecision> procesarLista_PrecioDistancia_MonoLocal(final Lista listaCompra, final ArrayList<Local> locales)
+	public ArrayList<CompraDecision> procesarLista_PrecioDistancia_MonoLocal(final Lista listaCompra, final ArrayList<Local> locales, final float latitudActual, final float longitudActual)
 	{
 		//----------||Analisis de los Locales||-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 		
@@ -77,6 +79,47 @@ public class ProcesadorDeListas
 				}
 			}
 		}
+		
+		ArrayList<Local> localesPreDecision = new ArrayList<Local>();
+		
+		for(i = 0; i < presupuestoPorLocal.length; i++)
+		{
+			if(localesPreguntar[i] && presupuestoPorLocal[i] == masBajo)
+			{
+				localesPreDecision.add(localesRevisados.get(i));
+			}
+		}
+
+		int mejorLocal = 0;
+		float mejorDistancia = Float.MAX_VALUE;
+		for(Local l: localesPreDecision)
+		{
+			if( (Math.abs(latitudActual - l.getLatitud() ) + Math.abs(longitudActual - l.getLongitud() ) ) <= mejorDistancia)
+			{
+				mejorDistancia= (Math.abs(latitudActual - l.getLatitud() ) + Math.abs(longitudActual - l.getLongitud() ) );
+				mejorLocal = l.getId();
+			}
+		}
+			
+		for(Local l: localesPreDecision)
+		{
+			if(l.getId() == mejorLocal)
+			{
+				for(j = 0; j < cantidadProductos; j++)
+				{
+					if(productosPreguntar[j])
+					{
+						Producto p = listaCompra.getLista().get(j).getProducto();
+						int c = listaCompra.getLista().get(j).getCantidad();
+						decisiones.add(new CompraDecision(p, c, l, l.getPrecioDeProducto(p.getId())));
+						productosPreguntar[j] = false;
+					}
+				}
+				break;
+			}
+		}
+		
+		/*
 		for(i = 0; i < presupuestoPorLocal.length; i++)
 		{
 			if(localesPreguntar[i] && presupuestoPorLocal[i] == masBajo)
@@ -96,10 +139,13 @@ public class ProcesadorDeListas
 				break;
 			}
 		}
+		*/
+		
+		this.guardarLista(listaCompra);
 		return decisiones;
 	}
 
-	public ArrayList<CompraDecision> procesarLista_PrecioDistancia_MultiLocal(final Lista listaCompra, final ArrayList<Local> locales)
+	public ArrayList<CompraDecision> procesarLista_PrecioDistancia_MultiLocal(final Lista listaCompra, final ArrayList<Local> locales, final float latitudActual, final float longitudActual)
 	{
 		//----------||Analisis de los Locales||-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 		
@@ -186,6 +232,7 @@ public class ProcesadorDeListas
 				}
 			}
 		}
+		this.guardarLista(listaCompra);
 		return decisiones;
 	}
 
@@ -348,5 +395,16 @@ public class ProcesadorDeListas
 			}
 		}
 		return arregloBooleano;
+	}
+
+	private void guardarLista(Lista listaCompra)
+	{
+		try {
+			ListaDAO.getInstancia().saveList(listaCompra);
+			
+		} catch (ListaException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
