@@ -13,6 +13,7 @@ import modelo.ItemLista;
 import modelo.Lista;
 import modelo.Local;
 import modelo.Producto;
+import modelo.Usuario;
 import procesado.CompraDecision;
 import procesado.ResultadoPosAnalisis;
 
@@ -78,8 +79,9 @@ public class Test {
 		{
 			l.cargarListadoDePrecios();
 		}
+		Controlador.getInstancia().crearUsuario(new Usuario(0, "testeo", "test", "test"));
 */
-		
+
 		ArrayList<ItemLista> listado = new ArrayList<ItemLista>();
 		listado.add(new ItemLista(0, productos.get(0), 2));
 		listado.add(new ItemLista(0, productos.get(1), 3));
@@ -88,14 +90,14 @@ public class Test {
 		Lista lc = new Lista(0, "010", "testeo", listado);
 
 		System.out.println("\nMonoLocal:");
-		ArrayList<CompraDecision> test1 = Controlador.getInstancia().procesarListaCompra(lc, -34.6167f, -58.3817f, 0.1f, "Precio_Distancia", "Mono_Local");
+		ArrayList<CompraDecision> test1 = Controlador.getInstancia().procesarListaCompra(lc, -34.6167f, -58.3817f, 0.01f, "Precio_Distancia", "Mono_Local");
 		ResultadoPosAnalisis lector1 = new ResultadoPosAnalisis(test1);
 		System.out.println(lector1.getDecision());
-
+/*
 		System.out.println("\nMultiLocal:");
-		ArrayList<CompraDecision> test2 = Controlador.getInstancia().procesarListaCompra(lc, -34.6167f, -58.3817f, 0.1f, "Precio_Distancia", "Multi_Local");
+		ArrayList<CompraDecision> test2 = Controlador.getInstancia().procesarListaCompra(lc, -34.6167f, -58.3817f, 0.01f, "Precio_Distancia", "Multi_Local");
 		ResultadoPosAnalisis lector2 = new ResultadoPosAnalisis(test2);
 		System.out.println(lector2.getDecision());
-	
+*/
 	}
 }

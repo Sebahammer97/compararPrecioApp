@@ -9,7 +9,6 @@ import org.hibernate.SessionFactory;
 import entities.CategoriaEntity;
 import exceptions.CadenaException;
 import exceptions.CategoriaException;
-import exceptions.ListaException;
 import hibernate.HibernateUtil;
 import modelo.Categoria;
 
@@ -53,7 +52,7 @@ public class CategoriaDAO
 		return resultado;
 	}
 	
-	public void saveCategoria(Categoria c) throws ListaException
+	public void saveCategoria(Categoria c) throws CategoriaException
 	{
 		try {
 			SessionFactory sf = HibernateUtil.getSessionFactory();
@@ -64,7 +63,7 @@ public class CategoriaDAO
 			s.getTransaction().commit();
 
 			} catch (Exception e) {
-				throw new ListaException("Categoria Error -Fallo al guardar-");
+				throw new CategoriaException("Categoria Error -Fallo al guardar-");
 			}
 	}
 	

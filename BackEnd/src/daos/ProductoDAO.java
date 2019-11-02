@@ -11,6 +11,7 @@ import exceptions.ListaException;
 import exceptions.ProductoException;
 import hibernate.HibernateUtil;
 import modelo.Categoria;
+import modelo.Imagen;
 import modelo.Producto;
 
 public class ProductoDAO {
@@ -52,7 +53,22 @@ public class ProductoDAO {
 		return resultado;
 	}
 
-	public void saveLocal(Producto p) throws ListaException
+	public ArrayList<Producto> getProductosByCategoria(Categoria c) throws ProductoException
+	{
+		ArrayList<Producto> resultado = new ArrayList<Producto>();
+		SessionFactory sf = HibernateUtil.getSessionFactory();
+		Session s = sf.getCurrentSession();
+		s.beginTransaction();
+		@SuppressWarnings("unchecked")
+		List<ProductoEntity> productos = s.createQuery("from ProductoEntity p where p.categoria.id =?")
+		.setInteger(0, c.getId())
+		.list();
+		for(ProductoEntity p : productos)
+			resultado.add(toNegocio(p));
+		return resultado;
+	}
+	
+	public void saveProducto(Producto p) throws ListaException
 	{
 		try {
 			SessionFactory sf = HibernateUtil.getSessionFactory();
@@ -61,7 +77,12 @@ public class ProductoDAO {
 			ProductoEntity producto = new ProductoEntity(p.getId(), CategoriaDAO.getInstancia().toEntity(p.getCategoria()), p.getNombre(), p.getDescripcion());
 			s.save(producto);
 			s.getTransaction().commit();
-
+			producto.setId(this.getProductoByNombre(p.getNombre()).getId());
+			for(Imagen i: p.getImagenes())
+			{
+				ImagenDAO.getInstancia().saveImagen(producto, i);
+			}
+			
 			} catch (Exception e) {
 				throw new ListaException("Producto Error -Fallo al guardar-");
 			}
@@ -73,13 +94,26 @@ public class ProductoDAO {
 			if(p != null) {
 				Categoria categoria = CategoriaDAO.getInstancia().toNegocio(p.getCategoria());
 				if(categoria != null) {
-					return new Producto(p.getId(), p.getNombre(), p.getDescripcion(), categoria);
+					return new Producto(p.getId(), p.getNombre(), p.getDescripcion(), categoria, ImagenDAO.getInstancia().getImagenesByProductoId(p.getId()));
 				}
 			}
 			
 		} catch (Exception e) {
 			throw new ProductoException("Producto Error -Fallo al transformar "+p.getId()+" a Negocio-");
 		}
+		return null;
+	}
+	
+	private Producto getProductoByNombre(String nombre) throws ProductoException
+	{
+		SessionFactory sf = HibernateUtil.getSessionFactory();
+		Session s = sf.getCurrentSession();
+		s.beginTransaction();
+		ProductoEntity producto = (ProductoEntity) s.createQuery("from ProductoEntity p where p.nombre = ?")
+		.setString(0, nombre)
+		.uniqueResult();
+		if(producto != null)
+			return toNegocio(producto);
 		return null;
 	}
 }

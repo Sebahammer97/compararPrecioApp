@@ -49,6 +49,27 @@ public class LocalDAO {
 			resultado.add(toNegocio(l));
 		return resultado;
 	}
+	
+	public ArrayList<Local> getLocalesEnRango(float latitudActual, float longitudActual, float maxDistancia) throws LocalException {
+		ArrayList<Local> resultado = new ArrayList<Local>();
+		SessionFactory sf = HibernateUtil.getSessionFactory();
+		Session s = sf.getCurrentSession();
+		float limiteInferiorLatitud = latitudActual - maxDistancia;
+		float limiteSuperiorLatitud = latitudActual + maxDistancia;
+		float limiteInferiorLongitud = longitudActual - maxDistancia;
+		float limiteSuperiorLongitud = longitudActual + maxDistancia;
+		s.beginTransaction();
+		@SuppressWarnings("unchecked")
+		List<LocalEntity> locales = s.createQuery("from LocalEntity l where (l.latitud between ? and ?) and (l.longitud between ? and ?)")
+		.setFloat(0, limiteInferiorLatitud)
+		.setFloat(1, limiteSuperiorLatitud)
+		.setFloat(2, limiteInferiorLongitud)
+		.setFloat(3, limiteSuperiorLongitud)
+		.list();
+		for(LocalEntity l : locales)
+			resultado.add(toNegocio(l));
+		return resultado;
+	}
 
 	public void saveLocal(Local l) throws ListaException
 	{

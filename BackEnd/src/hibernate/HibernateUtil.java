@@ -10,6 +10,7 @@ import entities.ListaEntity;
 import entities.LocalEntity;
 import entities.ProductoEntity;
 import entities.ProductoPrecioEntity;
+import entities.UsuarioEntity;
 
 public class HibernateUtil
 {
@@ -26,7 +27,8 @@ public class HibernateUtil
 			config.addAnnotatedClass(LocalEntity.class);
 			config.addAnnotatedClass(ProductoEntity.class);
 			config.addAnnotatedClass(ProductoPrecioEntity.class);
-
+			config.addAnnotatedClass(UsuarioEntity.class);
+			
 			sessionFactory = config.buildSessionFactory();
 		}
 		catch (Throwable ex)
