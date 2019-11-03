@@ -7,6 +7,7 @@ import modelo.Local;
 public class ResultadoPosAnalisis 
 {
 	private String decision;
+	private float totalPresupuesto;
 	private ArrayList<Local> locales;
 	
 	public ResultadoPosAnalisis(ArrayList<CompraDecision> arreglo)
@@ -45,8 +46,16 @@ public class ResultadoPosAnalisis
 			decision = decision.concat("\n");
 		}
 		decision = decision.concat("Gasto total Previsto: "+total+"\n");
+		this.totalPresupuesto = total;
 	}
 
+	public ResultadoPosAnalisis()
+	{
+		decision = "No existe solución en las condiciones dadas";
+		locales = new ArrayList<Local>();
+		totalPresupuesto = 0;
+	}
+	
 	public String getDecision()
 	{
 		return decision;
@@ -57,5 +66,8 @@ public class ResultadoPosAnalisis
 		return locales;
 	}
 	
-	
+	public float getTotalPresupuesto()
+	{
+		return totalPresupuesto;
+	}
 }

@@ -15,9 +15,9 @@ import modelo.Lista;
 import modelo.Local;
 import modelo.Producto;
 import modelo.Usuario;
-import procesado.CompraDecision;
 import procesado.InformacionPreAnalisis;
 import procesado.ProcesadorDeListas;
+import procesado.ResultadoPosAnalisis;
 
 public class Controlador {
 	
@@ -72,17 +72,21 @@ public class Controlador {
 		return new ArrayList<Local>();
 	}
 	
-	public void crearUsuario(Usuario u)
+	public boolean crearUsuario(Usuario u)
 	{
 		try {
 			Usuario usuario = UsuarioDAO.getInstancia().getUsuarioByNombre(u.getNombreUsuario());
 			if(usuario == null)
 			{
 				UsuarioDAO.getInstancia().saveUsuario(u);
+				return true;
 			}
+			return false;
+			
 		} catch (UsuarioException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return false;
 		}
 	}
 	
@@ -117,9 +121,8 @@ public class Controlador {
 	
 	public ArrayList<Local> obtenerLocalesIntegrosEnRango(final float latitudActual, final float longitudActual, final float maxDistancia)
 	{
-		ArrayList<Local> locales = new ArrayList<Local>();
 		try {
-			locales = LocalDAO.getInstancia().getLocalesEnRango(latitudActual, longitudActual, maxDistancia);
+			ArrayList<Local> locales = LocalDAO.getInstancia().getLocalesEnRango(latitudActual, longitudActual, maxDistancia);
 			for(Local l: locales)
 			{
 				l.cargarListadoDePrecios();
@@ -129,12 +132,16 @@ public class Controlador {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return locales;		
+		return new ArrayList<Local>();		
 	}
 	
-	public ArrayList<CompraDecision> procesarListaCompra(InformacionPreAnalisis info, String prioridad, String opcion)
+	public ResultadoPosAnalisis procesarListaCompra(InformacionPreAnalisis info, String prioridad, String opcion)
 	{	
 		ArrayList<Local> locales = obtenerLocalesIntegrosEnRango(info.getLatitud(), info.getLongitud(), info.getMaxDistancia());
+		if(locales.size() == 0)
+		{
+			return new ResultadoPosAnalisis();
+		}
 		Lista lista = info.getLista();
 		float latitudActual = info.getLatitud();
 		float longitudActual = info.getLongitud();
@@ -145,17 +152,17 @@ public class Controlador {
 			switch(opcion)
 			{
 			case "Mono_Local":
-				return ProcesadorDeListas.getInstancia().procesarLista_PrecioDistancia_MonoLocal(lista, locales, latitudActual, longitudActual);
+				return new ResultadoPosAnalisis(ProcesadorDeListas.getInstancia().procesarLista_PrecioDistancia_MonoLocal(lista, locales, latitudActual, longitudActual));
 				
 			case "Multi_Local":
-				return ProcesadorDeListas.getInstancia().procesarLista_PrecioDistancia_MultiLocal(lista, locales, latitudActual, longitudActual);
+				return new ResultadoPosAnalisis(ProcesadorDeListas.getInstancia().procesarLista_PrecioDistancia_MultiLocal(lista, locales, latitudActual, longitudActual));
 			}
 			break;
 		}
-		return new ArrayList<CompraDecision>();
+		return new ResultadoPosAnalisis(null);
 	}
 	
-	public ArrayList<CompraDecision> procesarListaCompraH(InformacionPreAnalisis info)
+	public ResultadoPosAnalisis procesarListaCompraH(InformacionPreAnalisis info)
 	{	
 		ArrayList<Local> locales = obtenerLocalesIntegrosEnRango(info.getLatitud(), info.getLongitud(), info.getMaxDistancia());
 		Lista lista = info.getLista();
@@ -173,13 +180,13 @@ public class Controlador {
 			switch(opcion)
 			{
 			case "Mono_Local":
-				return ProcesadorDeListas.getInstancia().procesarLista_PrecioDistancia_MonoLocal(lista, locales, latitudActual, longitudActual);
+				return new ResultadoPosAnalisis(ProcesadorDeListas.getInstancia().procesarLista_PrecioDistancia_MonoLocal(lista, locales, latitudActual, longitudActual));
 				
 			case "Multi_Local":
-				return ProcesadorDeListas.getInstancia().procesarLista_PrecioDistancia_MultiLocal(lista, locales, latitudActual, longitudActual);
+				return new ResultadoPosAnalisis(ProcesadorDeListas.getInstancia().procesarLista_PrecioDistancia_MultiLocal(lista, locales, latitudActual, longitudActual));
 			}
 			break;
 		}
-		return new ArrayList<CompraDecision>();
+		return new ResultadoPosAnalisis(null);
 	}
 }
