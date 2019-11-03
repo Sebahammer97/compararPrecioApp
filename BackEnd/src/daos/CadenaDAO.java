@@ -8,7 +8,6 @@ import org.hibernate.SessionFactory;
 
 import entities.CadenaEntity;
 import exceptions.CadenaException;
-import exceptions.ListaException;
 import hibernate.HibernateUtil;
 import modelo.Cadena;
 
@@ -52,7 +51,7 @@ public class CadenaDAO
 		return resultado;
 	}
 	
-	public void saveCadena(Cadena c) throws ListaException
+	public void saveCadena(Cadena c) throws CadenaException
 	{
 		try {
 			SessionFactory sf = HibernateUtil.getSessionFactory();
@@ -63,7 +62,7 @@ public class CadenaDAO
 			s.getTransaction().commit();
 
 			} catch (Exception e) {
-				throw new ListaException("Cadena Error -Fallo al guardar-");
+				throw new CadenaException("Cadena Error -Fallo al guardar-");
 			}
 	}
 	

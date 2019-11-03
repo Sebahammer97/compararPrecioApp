@@ -31,7 +31,7 @@ public class ListaEntity {
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 	}
-
+	
 	public Integer getId() {
 		return id;
 	}

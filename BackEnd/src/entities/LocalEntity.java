@@ -26,7 +26,14 @@ public class LocalEntity {
 	
 	public LocalEntity() {}
 	
-	public LocalEntity(Integer id, CadenaEntity cadena, String direccion, float latitud, float longitud) {
+	public LocalEntity(CadenaEntity cadena, String direccion, float latitud, float longitud) {
+		this.cadena = cadena;
+		this.direccion = direccion;
+		this.latitud = latitud;
+		this.longitud = longitud;
+	}
+	
+	public LocalEntity(int id, CadenaEntity cadena, String direccion, float latitud, float longitud) {
 		this.id = id;
 		this.cadena = cadena;
 		this.direccion = direccion;

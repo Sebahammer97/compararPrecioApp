@@ -27,13 +27,19 @@ public class ProductoEntity {
 		super();
 	}
 	
+	public ProductoEntity(CategoriaEntity categoria, String nombre, String descripcion) {
+		this.categoria = categoria;
+		this.nombre = nombre;
+		this.descripcion = descripcion;
+	}
+	
 	public ProductoEntity(int id, CategoriaEntity categoria, String nombre, String descripcion) {
 		this.id = id;
 		this.categoria = categoria;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 	}
-
+	
 	public Integer getId() {
 		return id;
 	}

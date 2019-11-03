@@ -35,7 +35,14 @@ public class ItemListaEntity {
 		this.producto = producto;
 		this.cantidad = cantidad;
 	}
-
+	
+	public ItemListaEntity (int id, ListaEntity lista, ProductoEntity producto, int cantidad) {
+		this.id = id;
+		this.lista = lista;
+		this.producto = producto;
+		this.cantidad = cantidad;
+	}
+	
 	public Integer getId() {
 		return id;
 	}

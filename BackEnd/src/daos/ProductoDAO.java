@@ -7,7 +7,6 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import entities.ProductoEntity;
-import exceptions.ListaException;
 import exceptions.ProductoException;
 import hibernate.HibernateUtil;
 import modelo.Categoria;
@@ -68,7 +67,7 @@ public class ProductoDAO {
 		return resultado;
 	}
 	
-	public void saveProducto(Producto p) throws ListaException
+	public void saveProducto(Producto p) throws ProductoException
 	{
 		try {
 			SessionFactory sf = HibernateUtil.getSessionFactory();
@@ -84,7 +83,7 @@ public class ProductoDAO {
 			}
 			
 			} catch (Exception e) {
-				throw new ListaException("Producto Error -Fallo al guardar-");
+				throw new ProductoException("Producto Error -Fallo al guardar-");
 			}
 	}	
 	

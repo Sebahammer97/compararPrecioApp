@@ -61,7 +61,7 @@ public class ProductoPrecioDAO {
 				}
 			}
 		} catch (Exception e) {
-			throw new ProductoPrecioException("No se pudo recuperar Producto");
+			throw new ProductoPrecioException("ProductoPrecio Error -Fallo al transformar "+p.getId()+" a Negocio-");
 		}
 		return null;
 	}

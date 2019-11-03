@@ -21,12 +21,16 @@ public class CategoriaEntity {
 		super();
 	}
 	
+	public CategoriaEntity(String titulo, String descripcion) {
+		this.titulo = titulo;
+		this.descripcion = descripcion;
+	}
+	
 	public CategoriaEntity(int id, String titulo, String descripcion) {
 		this.id = id;
 		this.titulo = titulo;
 		this.descripcion = descripcion;
 	}
-
 	public Integer getId() {
 		return id;
 	}

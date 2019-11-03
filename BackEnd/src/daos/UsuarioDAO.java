@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import entities.UsuarioEntity;
+import exceptions.CategoriaException;
 import exceptions.UsuarioException;
 import hibernate.HibernateUtil;
 import modelo.Usuario;
@@ -70,8 +71,8 @@ public class UsuarioDAO
 			SessionFactory sf = HibernateUtil.getSessionFactory();
 			Session s = sf.getCurrentSession();
 			s.beginTransaction();
-			UsuarioEntity categoria = new UsuarioEntity(u.getId(), u.getNombreUsuario(), u.getPass(), u.getEmail());
-			s.save(categoria);
+			UsuarioEntity usuario = new UsuarioEntity(u.getId(), u.getNombreUsuario(), u.getPass(), u.getEmail());
+			s.save(usuario);
 			s.getTransaction().commit();
 
 			} catch (Exception e) {
@@ -86,6 +87,16 @@ public class UsuarioDAO
 			
 		} catch (Exception e) {
 			throw new UsuarioException("Usuario Error -Fallo al transformar "+u.getId()+" a Negocio-");
+		}
+	}
+	
+	public UsuarioEntity toEntity(Usuario u) throws CategoriaException
+	{
+		try {
+			return new UsuarioEntity( u.getId(),u.getNombreUsuario(), u.getPass(), u.getEmail());
+			
+		} catch (Exception e) {
+			throw new CategoriaException("Usuario Error -Fallo al transformar "+u.getId()+" a Entidad-");
 		}
 	}
 }

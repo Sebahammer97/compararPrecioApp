@@ -71,7 +71,7 @@ public class LocalDAO {
 		return resultado;
 	}
 
-	public void saveLocal(Local l) throws ListaException
+	public void saveLocal(Local l) throws LocalException
 	{
 		try {
 			SessionFactory sf = HibernateUtil.getSessionFactory();
@@ -82,7 +82,7 @@ public class LocalDAO {
 			s.getTransaction().commit();
 
 			} catch (Exception e) {
-				throw new ListaException("Local Error -Fallo al guardar-");
+				throw new LocalException("Local Error -Fallo al guardar-");
 			}
 	}
 	

@@ -5,12 +5,15 @@ import org.hibernate.cfg.AnnotationConfiguration;
 
 import entities.CadenaEntity;
 import entities.CategoriaEntity;
+import entities.ConsumidorEntity;
+import entities.ImagenEntity;
 import entities.ItemListaEntity;
 import entities.ListaEntity;
 import entities.LocalEntity;
 import entities.ProductoEntity;
 import entities.ProductoPrecioEntity;
 import entities.UsuarioEntity;
+import entities.VendedorEntity;
 
 public class HibernateUtil
 {
@@ -28,6 +31,9 @@ public class HibernateUtil
 			config.addAnnotatedClass(ProductoEntity.class);
 			config.addAnnotatedClass(ProductoPrecioEntity.class);
 			config.addAnnotatedClass(UsuarioEntity.class);
+			config.addAnnotatedClass(ImagenEntity.class);
+			config.addAnnotatedClass(VendedorEntity.class);
+			config.addAnnotatedClass(ConsumidorEntity.class);
 			
 			sessionFactory = config.buildSessionFactory();
 		}

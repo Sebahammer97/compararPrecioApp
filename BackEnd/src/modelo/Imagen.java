@@ -2,20 +2,20 @@ package modelo;
 
 public class Imagen {
 	
-	private int numero;
+	private int id;
 	private byte[] imagen;
 	private String tipo;
 	private int idProducto;
 	
-	public Imagen(int numero, byte[] imagen, String tipo, int idProducto) {
-		this.numero = numero;
+	public Imagen(int id, byte[] imagen, String tipo, int idProducto) {
+		this.id = id;
 		this.imagen = imagen;
 		this.tipo = tipo;
 		this.idProducto = idProducto;
 	}
 	
-	public Imagen(int numero, String imagen, String tipo, int idProducto) {
-		this.numero = numero;
+	public Imagen(int id, String imagen, String tipo, int idProducto) {
+		this.id = id;
 		this.imagen = imagen.getBytes();
 		this.tipo = tipo;
 		this.idProducto = idProducto;
@@ -23,8 +23,8 @@ public class Imagen {
 	
 	public Imagen() {}
 
-	public int getNumero() {
-		return numero;
+	public int getId() {
+		return id;
 	}
 	
 	public byte[] getImagen() {

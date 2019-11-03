@@ -20,14 +20,19 @@ public class UsuarioEntity {
 	
 	public UsuarioEntity() {}
 	
-	public UsuarioEntity(Integer id, String nombreUsuario, String pass, String email) {
-		super();
+	public UsuarioEntity(String nombreUsuario, String pass, String email) {
+		this.nombreUsuario = nombreUsuario;
+		this.pass = pass;
+		this.email = email;
+	}
+	
+	public UsuarioEntity(int id, String nombreUsuario, String pass, String email) {
 		this.id = id;
 		this.nombreUsuario = nombreUsuario;
 		this.pass = pass;
 		this.email = email;
 	}
-
+	
 	public Integer getId() {
 		return id;
 	}

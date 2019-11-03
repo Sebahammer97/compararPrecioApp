@@ -26,7 +26,22 @@ public class ProductoPrecioEntity {
 	private float precio;
 	
 	public ProductoPrecioEntity() {}
-
+	
+	public ProductoPrecioEntity(LocalEntity local,ProductoEntity producto, float precio)
+	{
+		this.local = local;
+		this.producto = producto;
+		this.precio = precio;
+	}
+	
+	public ProductoPrecioEntity(int id, LocalEntity local,ProductoEntity producto, float precio)
+	{
+		this.id = id;
+		this.local = local;
+		this.producto = producto;
+		this.precio = precio;
+	}	
+	
 	public Integer getId() {
 		return id;
 	}

@@ -31,6 +31,13 @@ public class ImagenEntity {
 		this.tipo = tipo;
 		this.producto = producto;
 	}
+	
+	public ImagenEntity(int id, byte[] imagen, String tipo, ProductoEntity producto) {
+		this.id = id;
+		this.imagen = imagen;
+		this.tipo = tipo;
+		this.producto = producto;
+	}
 
 	public int getId() {
 		return id;

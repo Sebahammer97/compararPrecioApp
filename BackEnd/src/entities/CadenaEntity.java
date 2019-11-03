@@ -22,15 +22,20 @@ public class CadenaEntity {
 	
 	public CadenaEntity() {}
 	
-	public CadenaEntity(Integer id, String nombre, String razon_social, String cuit)
+	public CadenaEntity(String nombre, String razon_social, String cuit)
+	{
+		this.nombre = nombre;
+		this.razon_social = razon_social;
+		this.cuit = cuit;
+	}
+
+	public CadenaEntity(int id, String nombre, String razon_social, String cuit)
 	{
 		this.id = id;
 		this.nombre = nombre;
 		this.razon_social = razon_social;
 		this.cuit = cuit;
 	}
-
-
 
 	public Integer getId() {
 		return id;

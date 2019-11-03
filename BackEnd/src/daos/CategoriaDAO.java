@@ -7,7 +7,6 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import entities.CategoriaEntity;
-import exceptions.CadenaException;
 import exceptions.CategoriaException;
 import hibernate.HibernateUtil;
 import modelo.Categoria;
@@ -77,13 +76,13 @@ public class CategoriaDAO
 		}
 	}
 	
-	public CategoriaEntity toEntity(Categoria c) throws CadenaException
+	public CategoriaEntity toEntity(Categoria c) throws CategoriaException
 	{
 		try {
 			return new CategoriaEntity(c.getId(), c.getTitulo(), c.getDescripcion());
 			
 		} catch (Exception e) {
-			throw new CadenaException("Categoria Error -Fallo al transformar "+c.getId()+" a Entidad-");
+			throw new CategoriaException("Categoria Error -Fallo al transformar "+c.getId()+" a Entidad-");
 		}
 	}
 }
