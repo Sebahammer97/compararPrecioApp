@@ -3,14 +3,18 @@ package controlador;
 import java.util.ArrayList;
 
 import daos.CategoriaDAO;
+import daos.ImagenDAO;
 import daos.LocalDAO;
 import daos.ProductoDAO;
 import daos.UsuarioDAO;
+import entities.ProductoEntity;
 import exceptions.CategoriaException;
+import exceptions.ImagenException;
 import exceptions.LocalException;
 import exceptions.ProductoException;
 import exceptions.UsuarioException;
 import modelo.Categoria;
+import modelo.Imagen;
 import modelo.Lista;
 import modelo.Local;
 import modelo.Producto;
@@ -18,9 +22,13 @@ import modelo.Usuario;
 import procesado.InformacionPreAnalisis;
 import procesado.ProcesadorDeListas;
 import procesado.ResultadoPosAnalisis;
+import views.CategoriaView;
+import views.LocalView;
+import views.ProductoView;
+import views.UsuarioView;
 
 public class Controlador {
-	
+
 	private static Controlador instancia;
 
 	private Controlador() {
@@ -32,93 +40,119 @@ public class Controlador {
 		return instancia;
 	}
 
-	public ArrayList<Producto> obtenerProductos()
+	public ArrayList<ProductoView> obtenerProductos()
 	{
+		ArrayList<ProductoView> resultado = new ArrayList<ProductoView>();
 		try {
-			return ProductoDAO.getInstancia().getProductos();
+			for(Producto p: ProductoDAO.getInstancia().getProductos())
+			{
+				resultado.add(new ProductoView(p));
+			}
+			return resultado;
 		} catch (ProductoException e){
 			e.printStackTrace();
 		}
-		return new ArrayList<Producto>();
+		return resultado;
 	}
-	
-	public ArrayList<Categoria> obtenerCategorias()
+
+	public ArrayList<CategoriaView> obtenerCategorias()
 	{
+		ArrayList<CategoriaView> resultado = new ArrayList<CategoriaView>();
 		try {
-			return CategoriaDAO.getInstancia().getCategorias();
+			for(Categoria c: CategoriaDAO.getInstancia().getCategorias())
+			{
+				resultado.add(new CategoriaView(c));
+			}
+			return resultado;
 		} catch (CategoriaException e){
 			e.printStackTrace();
 		}
-		return new ArrayList<Categoria>();
+		return resultado;
 	}
-	
-	public ArrayList<Local> obtenerLocales()
+
+	public ArrayList<LocalView> obtenerLocales()
 	{
+		ArrayList<LocalView> resultado = new ArrayList<LocalView>();
 		try {
-			return LocalDAO.getInstancia().getLocales();
+			for(Local l: LocalDAO.getInstancia().getLocales())
+			{
+				resultado.add(new LocalView(l));
+			}
+			return resultado;
 		} catch (LocalException e){
 			e.printStackTrace();
 		}
-		return new ArrayList<Local>();
+		return resultado;
 	}
-	
-	public ArrayList<Local> obtenerLocalesEnRango(final float latitudActual, final float longitudActual, final float maxDistancia)
+
+	public ArrayList<LocalView> obtenerLocalesEnRango(final float latitudActual, final float longitudActual, final float maxDistancia)
 	{
+		ArrayList<LocalView> resultado = new ArrayList<LocalView>();
 		try {
-			return LocalDAO.getInstancia().getLocalesEnRango(latitudActual, longitudActual, maxDistancia);
+			for(Local l: LocalDAO.getInstancia().getLocalesEnRango(latitudActual, longitudActual, maxDistancia))
+			{
+				resultado.add(new LocalView(l));
+			}
+			return resultado;
 		} catch (LocalException e){
 			e.printStackTrace();
 		}
-		return new ArrayList<Local>();
+		return resultado;
 	}
-	
-	public boolean crearUsuario(Usuario u)
+
+	public boolean crearUsuario(UsuarioView uv)
 	{
 		try {
-			Usuario usuario = UsuarioDAO.getInstancia().getUsuarioByNombre(u.getNombreUsuario());
+			Usuario usuario = UsuarioDAO.getInstancia().getUsuarioByNombre(uv.getNombreUsuario());
 			if(usuario == null)
 			{
-				UsuarioDAO.getInstancia().saveUsuario(u);
+				UsuarioDAO.getInstancia().saveUsuario(new Usuario(uv.getId(),uv.getNombreUsuario(), uv.getPass(), uv.getEmail()));
 				return true;
 			}
 			return false;
-			
+
 		} catch (UsuarioException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return false;
 		}
 	}
-	
-	public Usuario autorizarUsuario(String nombreUsuario, String pass)
+
+	public UsuarioView autorizarUsuario(String nombreUsuario, String pass)
 	{
 		try {
 			Usuario usuario = UsuarioDAO.getInstancia().getUsuarioByNombre(nombreUsuario);
 			if(usuario != null)
 			{
-				 if(usuario.getPass() == pass)
-				 {
-				 return usuario;
-				 }
+				if(usuario.getPass() == pass)
+				{
+					return new UsuarioView(usuario.getId(), usuario.getNombreUsuario(), usuario.getEmail());
+				}
 			}
-			return usuario;
+			return null;
 		} catch (UsuarioException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return null;
 		}
 	}
-	
-	public ArrayList<Producto> obtenerProductosByCategoria(Categoria c)
+
+	public ArrayList<ProductoView> obtenerProductosByCategoria(CategoriaView c)
 	{
+		ArrayList<ProductoView> resultado = new ArrayList<ProductoView>();
 		try {
-			return ProductoDAO.getInstancia().getProductosByCategoria(c);
+			for(Producto p: ProductoDAO.getInstancia().getProductosByCategoria(c))
+			{
+				resultado.add(new ProductoView(p));
+			}
+			return resultado;
 		} catch (ProductoException e){
 			e.printStackTrace();
 		}
-		return new ArrayList<Producto>();
+		return resultado;
 	}
-	
+
+	//WARNING
 	public ArrayList<Local> obtenerLocalesIntegrosEnRango(final float latitudActual, final float longitudActual, final float maxDistancia)
 	{
 		try {
@@ -134,7 +168,14 @@ public class Controlador {
 		}
 		return new ArrayList<Local>();		
 	}
+	//WARNING
 	
+	public void guardarImagen(Imagen i) throws ImagenException, ProductoException
+	{
+		ProductoEntity producto = ProductoDAO.getInstancia().getProductoEntity(i.getIdProducto());
+		ImagenDAO.getInstancia().saveImagen(producto, i);
+	}
+
 	public ResultadoPosAnalisis procesarListaCompra(InformacionPreAnalisis info, String prioridad, String opcion)
 	{	
 		ArrayList<Local> locales = obtenerLocalesIntegrosEnRango(info.getLatitud(), info.getLongitud(), info.getMaxDistancia());
@@ -145,7 +186,7 @@ public class Controlador {
 		Lista lista = info.getLista();
 		float latitudActual = info.getLatitud();
 		float longitudActual = info.getLongitud();
-		
+
 		switch(prioridad)
 		{
 		case "Precio_Distancia":
@@ -153,7 +194,7 @@ public class Controlador {
 			{
 			case "Mono_Local":
 				return new ResultadoPosAnalisis(ProcesadorDeListas.getInstancia().procesarLista_PrecioDistancia_MonoLocal(lista, locales, latitudActual, longitudActual));
-				
+
 			case "Multi_Local":
 				return new ResultadoPosAnalisis(ProcesadorDeListas.getInstancia().procesarLista_PrecioDistancia_MultiLocal(lista, locales, latitudActual, longitudActual));
 			}
@@ -161,19 +202,19 @@ public class Controlador {
 		}
 		return new ResultadoPosAnalisis(null);
 	}
-	
+
 	public ResultadoPosAnalisis procesarListaCompraH(InformacionPreAnalisis info)
 	{	
 		ArrayList<Local> locales = obtenerLocalesIntegrosEnRango(info.getLatitud(), info.getLongitud(), info.getMaxDistancia());
 		Lista lista = info.getLista();
 		float latitudActual = info.getLatitud();
 		float longitudActual = info.getLongitud();
-		
+
 		//HARDCOREADO <-----
 		String prioridad = "Precio_Distancia";
 		String opcion = "Mono_Local";
 		//HARDCOREADO <-----
-		
+
 		switch(prioridad)
 		{
 		case "Precio_Distancia":
@@ -181,7 +222,7 @@ public class Controlador {
 			{
 			case "Mono_Local":
 				return new ResultadoPosAnalisis(ProcesadorDeListas.getInstancia().procesarLista_PrecioDistancia_MonoLocal(lista, locales, latitudActual, longitudActual));
-				
+
 			case "Multi_Local":
 				return new ResultadoPosAnalisis(ProcesadorDeListas.getInstancia().procesarLista_PrecioDistancia_MultiLocal(lista, locales, latitudActual, longitudActual));
 			}

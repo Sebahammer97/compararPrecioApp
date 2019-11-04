@@ -8,7 +8,6 @@ public class Usuario
 	private String email;
 	
 	public Usuario(int id, String nombreUsuario, String pass, String email) {
-		super();
 		this.id = id;
 		this.nombreUsuario = nombreUsuario;
 		this.pass = pass;

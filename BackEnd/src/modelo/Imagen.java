@@ -35,7 +35,7 @@ public class Imagen {
 		return tipo;
 	}
 	
-	public int getIdReclamo() {
+	public int getIdProducto() {
 		return idProducto;
 	}
 }

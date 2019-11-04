@@ -12,6 +12,7 @@ import hibernate.HibernateUtil;
 import modelo.Categoria;
 import modelo.Imagen;
 import modelo.Producto;
+import views.CategoriaView;
 
 public class ProductoDAO {
 
@@ -39,6 +40,19 @@ public class ProductoDAO {
 		return null;
 	}
 	
+	public ProductoEntity getProductoEntity(Integer id) throws ProductoException
+	{
+		SessionFactory sf = HibernateUtil.getSessionFactory();
+		Session s = sf.getCurrentSession();
+		s.beginTransaction();
+		ProductoEntity producto = (ProductoEntity) s.createQuery("from ProductoEntity p where p.id = ?")
+		.setInteger(0, id)
+		.uniqueResult();
+		if(producto != null)
+			return producto;
+		return null;
+	}
+	
 	public ArrayList<Producto> getProductos() throws ProductoException
 	{
 		ArrayList<Producto> resultado = new ArrayList<Producto>();
@@ -52,7 +66,7 @@ public class ProductoDAO {
 		return resultado;
 	}
 
-	public ArrayList<Producto> getProductosByCategoria(Categoria c) throws ProductoException
+	public ArrayList<Producto> getProductosByCategoria(CategoriaView c) throws ProductoException
 	{
 		ArrayList<Producto> resultado = new ArrayList<Producto>();
 		SessionFactory sf = HibernateUtil.getSessionFactory();
