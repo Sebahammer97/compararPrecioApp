@@ -110,7 +110,7 @@ public class Controlador {
 				return true;
 			}
 			return false;
-
+			
 		} catch (UsuarioException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
