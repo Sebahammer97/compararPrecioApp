@@ -25,6 +25,9 @@ import controlador.Controlador;
 import exceptions.UsuarioException;
 import modelo.Imagen;
 import procesado.Geodatos;
+import procesado.InformacionPreAnalisis;
+import procesado.ResultadoPosAnalisis;
+import views.CategoriaView;
 import views.LocalView;
 import views.ProductoView;
 import views.UsuarioView;
@@ -63,7 +66,17 @@ public class HomeController {
 
 		return mapper.writeValueAsString(productos);
 	}
+	
+	@RequestMapping(value = "/VerProductosDeCategoria", method = RequestMethod.POST, headers = "Accept=application/json")
+	@ResponseBody
+	public String verProductosDeCategoria(@RequestBody String categoriaJson) throws JsonParseException, JsonMappingException, IOException{
+		ObjectMapper mapper = new ObjectMapper();
+		
+		ArrayList<ProductoView> productos = Controlador.getInstancia().obtenerProductosByCategoria(mapper.readValue(categoriaJson, CategoriaView.class));
 
+		return mapper.writeValueAsString(productos);
+	}
+	
 	@RequestMapping(value = "/VerLocalesEnRango", method = RequestMethod.POST, headers = "Accept=application/json")
 	@ResponseBody
 	public String altaReclamo(@RequestBody String geoJson) throws JsonParseException, JsonMappingException, IOException{
@@ -73,6 +86,16 @@ public class HomeController {
 		ArrayList<LocalView> locales = Controlador.getInstancia().obtenerLocalesEnRango(geo.getLatitud(), geo.getLatitud(), geo.getLongitud());
 
 		return mapper.writeValueAsString(locales);
+	}
+	
+	@RequestMapping(value = "/ProcesarLista", method = RequestMethod.POST, headers = "Accept=application/json")
+	@ResponseBody
+	public String procesarLista(@RequestBody String infoJson) throws JsonParseException, JsonMappingException, IOException{
+		ObjectMapper mapper = new ObjectMapper();
+		
+		ResultadoPosAnalisis resultado = Controlador.getInstancia().procesarListaCompraH(mapper.readValue(infoJson, InformacionPreAnalisis.class));
+
+		return mapper.writeValueAsString(resultado);
 	}
 	
 	@RequestMapping(value = "/GuardarImagen", method = RequestMethod.POST, headers = "Accept=application/json")
