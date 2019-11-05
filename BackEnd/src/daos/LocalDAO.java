@@ -7,7 +7,6 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import entities.LocalEntity;
-import exceptions.ListaException;
 import exceptions.LocalException;
 import hibernate.HibernateUtil;
 import modelo.Cadena;

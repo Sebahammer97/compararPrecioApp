@@ -39,13 +39,13 @@ public class UsuarioDAO
 		return null;
 	}
 
-	public Usuario getUsuarioByNombre(String nombreUsuario) throws UsuarioException
+	public Usuario getUsuarioByEmail(String email) throws UsuarioException
 	{
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session s = sf.getCurrentSession();
 		s.beginTransaction();
-		UsuarioEntity usuario = (UsuarioEntity) s.createQuery("from UsuarioEntity u where u.nombreUsuario = ?")
-			.setString(0, nombreUsuario)
+		UsuarioEntity usuario = (UsuarioEntity) s.createQuery("from UsuarioEntity u where u.email = ?")
+			.setString(0, email)
 			.uniqueResult();
 		if(usuario != null)
 			return toNegocio(usuario);
@@ -71,7 +71,7 @@ public class UsuarioDAO
 			SessionFactory sf = HibernateUtil.getSessionFactory();
 			Session s = sf.getCurrentSession();
 			s.beginTransaction();
-			UsuarioEntity usuario = new UsuarioEntity(u.getId(), u.getNombreUsuario(), u.getPass(), u.getEmail());
+			UsuarioEntity usuario = new UsuarioEntity(u.getId(), u.getEmail(), u.getPass(), u.getNombre(), u.getEdad(), u.getUbicacion(), u.getDescripcion());
 			s.save(usuario);
 			s.getTransaction().commit();
 
@@ -83,7 +83,7 @@ public class UsuarioDAO
 	public Usuario toNegocio(UsuarioEntity u) throws UsuarioException
 	{
 		try {
-			return new Usuario(u.getId(), u.getNombreUsuario(), u.getPass(), u.getEmail());
+			return new Usuario(u.getId(), u.getEmail(), u.getPass(), u.getNombre(), u.getEdad(), u.getUbicacion(), u.getDescripcion());
 			
 		} catch (Exception e) {
 			throw new UsuarioException("Usuario Error -Fallo al transformar "+u.getId()+" a Negocio-");
@@ -93,7 +93,7 @@ public class UsuarioDAO
 	public UsuarioEntity toEntity(Usuario u) throws CategoriaException
 	{
 		try {
-			return new UsuarioEntity( u.getId(),u.getNombreUsuario(), u.getPass(), u.getEmail());
+			return new UsuarioEntity(u.getId(), u.getEmail(), u.getPass(), u.getNombre(), u.getEdad(), u.getUbicacion(), u.getDescripcion());
 			
 		} catch (Exception e) {
 			throw new CategoriaException("Usuario Error -Fallo al transformar "+u.getId()+" a Entidad-");

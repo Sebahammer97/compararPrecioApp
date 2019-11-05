@@ -66,43 +66,65 @@ public class HomeController {
 
 		return mapper.writeValueAsString(productos);
 	}
-	
+
 	@RequestMapping(value = "/VerProductosDeCategoria", method = RequestMethod.POST, headers = "Accept=application/json")
 	@ResponseBody
 	public String verProductosDeCategoria(@RequestBody String categoriaJson) throws JsonParseException, JsonMappingException, IOException{
+
+		//		int id, String titulo, String descripcion
+
 		ObjectMapper mapper = new ObjectMapper();
-		
+
 		ArrayList<ProductoView> productos = Controlador.getInstancia().obtenerProductosByCategoria(mapper.readValue(categoriaJson, CategoriaView.class));
 
 		return mapper.writeValueAsString(productos);
+	}
+
+	@RequestMapping(value = "/VerCategorias", method = RequestMethod.GET)
+	@ResponseBody
+	public String verCategorias() throws JsonProcessingException{
+		ObjectMapper mapper = new ObjectMapper();
+
+		ArrayList<CategoriaView> categorias = Controlador.getInstancia().obtenerCategorias();
+
+		return mapper.writeValueAsString(categorias);
 	}
 	
 	@RequestMapping(value = "/VerLocalesEnRango", method = RequestMethod.POST, headers = "Accept=application/json")
 	@ResponseBody
 	public String altaReclamo(@RequestBody String geoJson) throws JsonParseException, JsonMappingException, IOException{
+
+		//		float latitud, float longitud, float maxDistancia
+
 		ObjectMapper mapper = new ObjectMapper();
 		Geodatos geo = mapper.readValue(geoJson, Geodatos.class);
-		
+
 		ArrayList<LocalView> locales = Controlador.getInstancia().obtenerLocalesEnRango(geo.getLatitud(), geo.getLatitud(), geo.getLongitud());
 
 		return mapper.writeValueAsString(locales);
 	}
-	
+
 	@RequestMapping(value = "/ProcesarLista", method = RequestMethod.POST, headers = "Accept=application/json")
 	@ResponseBody
 	public String procesarLista(@RequestBody String infoJson) throws JsonParseException, JsonMappingException, IOException{
+
+		//		String nombre, String descripcion, float latitud, float longitud, float maxDistancia, Lista lista
+
 		ObjectMapper mapper = new ObjectMapper();
-		
+
 		ResultadoPosAnalisis resultado = Controlador.getInstancia().procesarListaCompraH(mapper.readValue(infoJson, InformacionPreAnalisis.class));
 
 		return mapper.writeValueAsString(resultado);
 	}
-	
+
 	@RequestMapping(value = "/GuardarImagen", method = RequestMethod.POST, headers = "Accept=application/json")
 	@ResponseBody
 	public void guardarImagen(@RequestBody String imagenJson) {
+
+		//		int id, byte[] imagen, String tipo, int idProducto
+
+		ObjectMapper mapper = new ObjectMapper();
 		try {
-			ObjectMapper mapper = new ObjectMapper();
 			imagenJson = imagenJson.substring(10, imagenJson.length()-1);
 			Imagen i = mapper.readValue(imagenJson, Imagen.class);
 			try {
@@ -119,24 +141,28 @@ public class HomeController {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@RequestMapping(value = "/CrearUsuario", method = RequestMethod.POST)
 	@ResponseBody
 	public String altaUsuario(@RequestParam(value="usuario", required=true) String usuario, @RequestParam(value="password", required=true) String password, @RequestParam(value="email", required=true) String email) throws UsuarioException {
 		try {
 			ObjectMapper mapper = new ObjectMapper();
-			return mapper.writeValueAsString(Controlador.getInstancia().crearUsuario(new UsuarioView(0, usuario, password, email)));
+			
+			//WARNING
+			return mapper.writeValueAsString(Controlador.getInstancia().crearUsuario(new UsuarioView(0, email, password, email, 0, "", "")));
+			//WARNING
+			
 		} catch (Exception e) {
 			throw new UsuarioException("No se pudo registrar el Usuario");
 		}
 	}
-	
+
 	@RequestMapping(value = "/AutenticarUsuario", method = RequestMethod.POST)
 	@ResponseBody
-	public String autenticacionUsuario(@RequestParam(value="usuario", required=true) String usuario, @RequestParam(value="password", required=true) String password) throws UsuarioException {
+	public String autenticacionUsuario(@RequestParam(value="email", required=true) String email, @RequestParam(value="password", required=true) String password) throws UsuarioException {
 		try {
 			ObjectMapper mapper = new ObjectMapper();
-			return mapper.writeValueAsString(Controlador.getInstancia().autorizarUsuario(usuario, password));
+			return mapper.writeValueAsString(Controlador.getInstancia().autorizarUsuario(email, password));
 		} catch (Exception e) {
 			throw new UsuarioException("No se pudo autenticar el Usuario");
 		}

@@ -103,10 +103,10 @@ public class Controlador {
 	public boolean crearUsuario(UsuarioView uv)
 	{
 		try {
-			Usuario usuario = UsuarioDAO.getInstancia().getUsuarioByNombre(uv.getNombreUsuario());
+			Usuario usuario = UsuarioDAO.getInstancia().getUsuarioByEmail(uv.getEmail());
 			if(usuario == null)
 			{
-				UsuarioDAO.getInstancia().saveUsuario(new Usuario(uv.getId(),uv.getNombreUsuario(), uv.getPass(), uv.getEmail()));
+				UsuarioDAO.getInstancia().saveUsuario(new Usuario(uv.getId(),uv.getEmail(), uv.getPass(), uv.getNombre(), uv.getEdad(), uv.getUbicacion(), uv.getDescripcion()));
 				return true;
 			}
 			return false;
@@ -118,15 +118,15 @@ public class Controlador {
 		}
 	}
 
-	public UsuarioView autorizarUsuario(String nombreUsuario, String pass)
+	public UsuarioView autorizarUsuario(String email, String pass)
 	{
 		try {
-			Usuario usuario = UsuarioDAO.getInstancia().getUsuarioByNombre(nombreUsuario);
+			Usuario usuario = UsuarioDAO.getInstancia().getUsuarioByEmail(email);
 			if(usuario != null)
 			{
 				if(usuario.getPass() == pass)
 				{
-					return new UsuarioView(usuario.getId(), usuario.getNombreUsuario(), usuario.getEmail());
+					return new UsuarioView(usuario.getId(), usuario.getEmail(), usuario.getNombre(), usuario.getEdad(), usuario.getUbicacion(), usuario.getDescripcion());
 				}
 			}
 			return null;

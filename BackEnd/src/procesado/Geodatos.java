@@ -6,6 +6,13 @@ public class Geodatos
 	private float longitud;
 	private float maxDistancia;
 	
+	public Geodatos(float latitud, float longitud, float maxDistancia) {
+		super();
+		this.latitud = latitud;
+		this.longitud = longitud;
+		this.maxDistancia = maxDistancia;
+	}
+	
 	public float getLatitud() {
 		return latitud;
 	}

@@ -12,41 +12,62 @@ public class UsuarioEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
-	
-	private String nombreUsuario;
-	private String pass;
+	private int id;
+
 	private String email;
-	
+	private String pass;
+	private String nombre;
+	private int edad;
+	private String ubicacion;
+	private String descripcion;
+
 	public UsuarioEntity() {}
-	
-	public UsuarioEntity(String nombreUsuario, String pass, String email) {
-		this.nombreUsuario = nombreUsuario;
-		this.pass = pass;
-		this.email = email;
-	}
-	
-	public UsuarioEntity(int id, String nombreUsuario, String pass, String email) {
+
+	public UsuarioEntity(int id, String email, String pass, String nombre, int edad, String ubicacion, String descripcion) {
 		this.id = id;
-		this.nombreUsuario = nombreUsuario;
-		this.pass = pass;
 		this.email = email;
+		this.pass = pass;
+		this.nombre = nombre;
+		this.edad = edad;
+		this.ubicacion = ubicacion;
+		this.descripcion = descripcion;
 	}
-	
+
+	public UsuarioEntity(String email, String pass, String nombre, int edad, String ubicacion, String descripcion) {
+		this.email = email;
+		this.pass = pass;
+		this.nombre = nombre;
+		this.edad = edad;
+		this.ubicacion = ubicacion;
+		this.descripcion = descripcion;
+	}
+
 	public Integer getId() {
 		return id;
-	}
-
-	public String getNombreUsuario() {
-		return nombreUsuario;
-	}
-
-	public String getPass() {
-		return pass;
 	}
 
 	public String getEmail() {
 		return email;
 	}
 
+	public String getPass() {
+		return pass;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public int getEdad() {
+		return edad;
+	}
+
+	public String getUbicacion() {
+		return ubicacion;
+	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+	
 }
