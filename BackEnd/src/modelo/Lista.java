@@ -15,6 +15,8 @@ public class Lista {
 		this.descripcion = descripcion;
 		this.items = items;
 	}
+	
+	public Lista () { }
 
 	public int getId() {
 		return id;

@@ -22,6 +22,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import controlador.Controlador;
+import exceptions.CategoriaException;
 import exceptions.UsuarioException;
 import modelo.Imagen;
 import procesado.Geodatos;
@@ -56,7 +57,8 @@ public class HomeController {
 
 		return "home";
 	}
-
+	
+	/** OK */
 	@RequestMapping(value = "/VerProductos", method = RequestMethod.GET)
 	@ResponseBody
 	public String verProductos() throws JsonProcessingException{
@@ -67,19 +69,28 @@ public class HomeController {
 		return mapper.writeValueAsString(productos);
 	}
 
-	@RequestMapping(value = "/VerProductosDeCategoria", method = RequestMethod.POST, headers = "Accept=application/json")
+	/** OK */
+	@RequestMapping(value = "/VerProductosDeCategoria", method = RequestMethod.GET)
 	@ResponseBody
-	public String verProductosDeCategoria(@RequestBody String categoriaJson) throws JsonParseException, JsonMappingException, IOException{
+	public String verProductosDeCategoria(@RequestParam(value="id", required=true) int id) throws JsonParseException, JsonMappingException, IOException{
 
 		//		int id, String titulo, String descripcion
 
 		ObjectMapper mapper = new ObjectMapper();
 
-		ArrayList<ProductoView> productos = Controlador.getInstancia().obtenerProductosByCategoria(mapper.readValue(categoriaJson, CategoriaView.class));
+		ArrayList<ProductoView> productos;
+		try {
+			productos = Controlador.getInstancia().obtenerProductosByCategoria(id);
+			return mapper.writeValueAsString(productos);
+		} catch (CategoriaException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
-		return mapper.writeValueAsString(productos);
+		return null;
 	}
 
+	/** OK */
 	@RequestMapping(value = "/VerCategorias", method = RequestMethod.GET)
 	@ResponseBody
 	public String verCategorias() throws JsonProcessingException{
@@ -90,14 +101,15 @@ public class HomeController {
 		return mapper.writeValueAsString(categorias);
 	}
 	
-	@RequestMapping(value = "/VerLocalesEnRango", method = RequestMethod.POST, headers = "Accept=application/json")
+	/** OK */
+	@RequestMapping(value = "/VerLocalesEnRango", method = RequestMethod.GET)
 	@ResponseBody
-	public String altaReclamo(@RequestBody String geoJson) throws JsonParseException, JsonMappingException, IOException{
+	public String altaReclamo(@RequestParam(value="latitud", required=true) float latitud, @RequestParam(value="longitud", required=true) float longitud, @RequestParam(value="maxDistancia", required=true) float maxDistancia) throws JsonParseException, JsonMappingException, IOException{
 
 		//		float latitud, float longitud, float maxDistancia
 
 		ObjectMapper mapper = new ObjectMapper();
-		Geodatos geo = mapper.readValue(geoJson, Geodatos.class);
+		Geodatos geo = new Geodatos(latitud, longitud, maxDistancia);
 
 		ArrayList<LocalView> locales = Controlador.getInstancia().obtenerLocalesEnRango(geo.getLatitud(), geo.getLatitud(), geo.getLongitud());
 
@@ -142,14 +154,15 @@ public class HomeController {
 		}
 	}
 
-	@RequestMapping(value = "/CrearUsuario", method = RequestMethod.POST)
+	/** OK */
+	@RequestMapping(value = "/CrearUsuario", method = RequestMethod.GET)
 	@ResponseBody
 	public String altaUsuario(@RequestParam(value="usuario", required=true) String usuario, @RequestParam(value="password", required=true) String password, @RequestParam(value="email", required=true) String email) throws UsuarioException {
 		try {
 			ObjectMapper mapper = new ObjectMapper();
 			
 			//WARNING
-			return mapper.writeValueAsString(Controlador.getInstancia().crearUsuario(new UsuarioView(0, email, password, email, 0, "", "")));
+			return mapper.writeValueAsString(Controlador.getInstancia().crearUsuario(new UsuarioView(0, email, password, usuario, 0, "", "")));
 			//WARNING
 			
 		} catch (Exception e) {
@@ -157,7 +170,8 @@ public class HomeController {
 		}
 	}
 
-	@RequestMapping(value = "/AutenticarUsuario", method = RequestMethod.POST)
+	/** OK */
+	@RequestMapping(value = "/AutenticarUsuario", method = RequestMethod.GET)
 	@ResponseBody
 	public String autenticacionUsuario(@RequestParam(value="email", required=true) String email, @RequestParam(value="password", required=true) String password) throws UsuarioException {
 		try {

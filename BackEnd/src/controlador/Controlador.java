@@ -137,8 +137,9 @@ public class Controlador {
 		}
 	}
 
-	public ArrayList<ProductoView> obtenerProductosByCategoria(CategoriaView c)
+	public ArrayList<ProductoView> obtenerProductosByCategoria(int id) throws CategoriaException
 	{
+		Categoria c = CategoriaDAO.getInstancia().getCategoria(id);
 		ArrayList<ProductoView> resultado = new ArrayList<ProductoView>();
 		try {
 			for(Producto p: ProductoDAO.getInstancia().getProductosByCategoria(c))

@@ -42,6 +42,8 @@ public class UsuarioView
 		this.pass = "La curiosidad mato al gato";
 	}
 
+	public UsuarioView() { }	
+	
 	public int getId() {
 		return id;
 	}
